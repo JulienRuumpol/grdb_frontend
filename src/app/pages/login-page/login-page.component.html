@@ -1,15 +1,18 @@
-<h1> GRDB logo here</h1>
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+    <mat-card fxflex="25">
 
-<div class="flex-container">
-    <form (ngSubmit)="onSubmit()">
-        <div>
-            <label for="username"> Username </label>
-            <input type="text" id="username" [(ngModel)]="username" name="username" required>
-        </div>
-        <div>
-            <label for="password"> Password</label>
-            <input type="password" id="password" [(ngModel)]="password" name="password">
-        </div>
-        <button type="submit">Login</button>
-    </form>
+        <form (ngSubmit)="onSubmit()" fxLayoutAlign="stretch" fxLayout="column" class="login-form">
+            <mat-toolbar color="primary">Login </mat-toolbar>
+            <mat-form-field>
+                <input matInput placeholder="email" id="email" [(ngModel)]="email" name="email">
+            </mat-form-field>
+
+            <mat-form-field>
+                <input matInput type="password" placeholder="password" id="password" [(ngModel)]="password"
+                    name="password">
+            </mat-form-field>
+
+            <button mat-button type="submit" class="submit-button">Login</button>
+        </form>
+    </mat-card>
 </div>
