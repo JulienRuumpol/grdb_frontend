@@ -22,7 +22,6 @@ export class LeftNavBarComponent {
 
   navigateToUserRole() {
     // implement code to route to /userRole
-    console.log('hi')
 
     this._router.navigate(['userRole'])
   }
