@@ -1,0 +1,29 @@
+.toolbar {
+    background-color: rgb(17, 197, 247);
+}
+
+.navbar-icon-right {}
+
+.material-list-right {
+    flex: 1 1 auto;
+    display: flex;
+}
+
+.fill-space {
+    flex: 1 1 auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    border-right: black;
+    border-bottom: black;
+    background-color: rgb(17, 197, 247);
+}
+
+p {
+    color: white;
+    padding: 5px;
+}

@@ -1,0 +1,19 @@
+<mat-toolbar class="toolbar">
+    <div class="container">
+        <mat-icon class="navbar-icon" (click)="navigateToHomeScreen()" aria-hidden="false"
+            aria-label="Example home icon" fontIcon="home"></mat-icon>
+
+    </div>
+    <p>GSDB</p>
+
+    <span class="fill-space"></span>
+    <mat-icon class="navbar-icon" (click)="navigateToUserRole()" aria-hidden="false" aria-label="Example home icon"
+        fontIcon="manage_accounts"></mat-icon>
+    <mat-icon class="navbar-icon-right" (click)="switchLanguage()" aria-hidden="false"
+        aria-label="Example language icon" fontIcon="language"></mat-icon>
+    <mat-icon class="navbar-icon-right" (click)="navigateToUserDetailScreen()" aria-hidden="false"
+        aria-label="Example account circle icon" fontIcon="account_circle"></mat-icon>
+    <mat-icon class="navbar-icon-right" (click)="logout()" aria-hidden="false" aria-label="Example logout icon"
+        fontIcon="logout"></mat-icon>
+
+</mat-toolbar>
