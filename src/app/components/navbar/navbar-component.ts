@@ -5,17 +5,17 @@ import { MatList } from '@angular/material/list'
 import { MatListItem } from '@angular/material/list';
 import { MatToolbar } from '@angular/material/toolbar';
 @Component({
-  selector: 'app-left-nav-bar',
+  selector: 'app-navbar',
   imports: [
     MatIcon,
     MatList,
     MatListItem,
     MatToolbar
   ],
-  templateUrl: './left-nav-bar.component.html',
-  styleUrl: './left-nav-bar.component.css'
+  templateUrl: './navbar-component.html',
+  styleUrl: './navbar-component.css'
 })
-export class LeftNavBarComponent {
+export class NavBarComponent {
 
 
   constructor(private _router: Router) { }
