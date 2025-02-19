@@ -1,39 +1,33 @@
-<!-- <div fxLayoutAlign="center center " fxFlexFill class="main-div">
-    <mat-card fxflex="25">
-
-        <form (ngSubmit)="onSubmit()" fxLayoutAlign="stretch" fxLayout="column" class="login-form">
-            <mat-toolbar color="primary">Login </mat-toolbar>
-            <mat-form-field>
-                <input matInput placeholder="email" id="email" [(ngModel)]="email" name="email">
-            </mat-form-field>
-
-            <mat-form-field>
-                <input matInput type="password" placeholder="password" id="password" [(ngModel)]="password"
-                    name="password">
-            </mat-form-field>
-
-            <button mat-button type="submit" class="submit-button">Login</button>
-        </form>
-    </mat-card>
-</div> -->
-
-
 <div fxLayoutAlign="center center " fxFlexFill class="main-div">
     <mat-card fxflex="25">
-
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" fxLayoutAlign="stretch" fxLayout="column"
             class="login-form">
             <mat-toolbar color="primary">Login </mat-toolbar>
+            @if (displayEmailError) {
+            <mat-error>Invalid email</mat-error>
+            }
             <mat-form-field>
                 <input [formControl]="loginForm.controls.email" matInput placeholder="email" id="email" name="email">
+
             </mat-form-field>
 
+            @if (displayPasswordError) {
+            <mat-error>Please enter a password</mat-error>
+            }
             <mat-form-field>
                 <input [formControl]="loginForm.controls.password" matInput type="password" placeholder="password"
                     id="password" name="password">
             </mat-form-field>
 
-            <button mat-button type="submit" class="submit-button">Login</button>
+            @if (displayAuthError) {
+            <mat-error>Invalid email and password</mat-error>
+            }
+
+            <button mat-button type="submit" class="submit-button">Login
+            </button>
+            @if(isLoggingIn){
+            <mat-spinner class="mat-spinner"> </mat-spinner>
+            }
         </form>
     </mat-card>
 </div>
