@@ -3,3 +3,40 @@
     flex-basis: 25%;
     flex-wrap: wrap;
 }
+
+.game-card {
+    max-width: 500px;
+    margin: 5px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-content {
+    display: flex;
+    align-items: center;
+}
+
+.game-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 16px;
+}
+
+.game-details {
+    flex: 1;
+}
+
+.game-title {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.game-description {
+    font-size: 14px;
+    color: black;
+    margin-top: 8px;
+}
