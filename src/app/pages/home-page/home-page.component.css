@@ -6,7 +6,7 @@
 
 .game-card {
     max-width: 500px;
-    margin: 5px;
+    margin: 10px;
     padding: 16px;
     display: flex;
     flex-direction: column;
