@@ -24,7 +24,23 @@ export class HomePageComponent implements OnInit {
 
   constructor(private userService: UserService, private _router: Router) { }
   ngOnInit(): void {
+    this.getUserGameData()
+  }
 
+  onGameClick(gameId: Number) {
+    alert('NYI navigating to game detail page ' + gameId)
+    // this._router.navigate(["gameDetail/{gameId}"])
+  }
+
+  openAddGameDialog() {
+    this.dialog.open(AddGameComponent)
+
+    this.dialog.afterAllClosed.subscribe((result: any) => {
+      this.getUserGameData()
+    })
+  }
+
+  getUserGameData() {
     this.userService.getGamesByUserId(2).subscribe({
       next: (v) => {
         this.games = v;
@@ -36,16 +52,4 @@ export class HomePageComponent implements OnInit {
       }
     })
   }
-
-  onGameClick(gameId: Number) {
-    alert('NYI navigating to game detail page ' + gameId)
-    // this._router.navigate(["gameDetail/{gameId}"])
-  }
-
-  openAddGameDialog() {
-    console.log('hi')
-    this.dialog.open(AddGameComponent)
-  }
-
-
 }

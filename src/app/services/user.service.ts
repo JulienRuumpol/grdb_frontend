@@ -20,4 +20,25 @@ export class UserService {
       })))
     )
   }
+
+  getNonListedGamesByUser(userId: number): Observable<GameDto[]> {
+    return this.http.get(this.appurl + "/" + userId + "/game/unique").pipe(
+      map((response: any) => response.map((game: GameDto) => ({
+        id: game.id,
+        name: game.name,
+        description: game.description
+      })))
+    )
+  }
+
+  addGameToUser(userId: number, gameId: number): Observable<any> {
+
+    let emptybody = {
+      id: "",
+      name: "",
+      description: ""
+    }
+    return this.http.post(this.appurl + "/" + userId + "/game/" + gameId, emptybody)
+
+  }
 }
