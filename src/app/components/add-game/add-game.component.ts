@@ -25,13 +25,6 @@ import { MatIcon } from '@angular/material/icon';
 })
 export class AddGameComponent implements OnInit, AfterViewInit {
 
-
-  foods: any[] = [
-    { value: 'Sea of thieves', viewValue: 'Sea of thieves' },
-    { value: 'Guild wars 2', viewValue: 'Guild wars 2' },
-    { value: 'Final fantasy', viewValue: 'Final fantasy' },
-  ];
-
   games: GameDto[] = []
 
   constructor(private userService: UserService, private dialogRef: MatDialogRef<AddGameComponent>) { }
