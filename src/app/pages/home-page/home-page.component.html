@@ -1,0 +1,25 @@
+<h1> Library</h1>
+<div class="game-container">
+    <!-- for every retrieved game display a card with information -->
+    <!-- <mat-card>
+        <img mat-card-image src="assets/img/wip.jpg">
+        <h1> game title</h1>
+        <p> a game description</p>
+        <p> Amount of reviews: tbd </p>
+    </mat-card> -->
+
+
+    @for (game of games; track game.id) {
+    <mat-card (click)="onGameClick(game.id)" class="game-card">
+        <div class="card-content">
+            <img mat-card-image class="game-image" src="assets/img/wip.jpg" alt="">
+            <div class="game-details">
+                <h2 class="game-title"> {{game.name}}</h2>
+                <p class="game-description">{{game.description}}</p>
+            </div>
+        </div>
+    </mat-card>
+    }
+
+    <h1 (click)="openAddGameDialog()"> +</h1>
+</div>
