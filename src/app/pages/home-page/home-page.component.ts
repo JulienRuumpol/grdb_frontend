@@ -28,8 +28,7 @@ export class HomePageComponent implements OnInit {
   }
 
   onGameClick(gameId: Number) {
-    alert('NYI navigating to game detail page ' + gameId)
-    // this._router.navigate(["gameDetail/{gameId}"])
+    this._router.navigate(["game/" + gameId])
   }
 
   openAddGameDialog() {
