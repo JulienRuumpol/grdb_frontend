@@ -1,8 +1,23 @@
-<p>game-detail works!</p>
+<div class="game-info-container">
 
-<img mat-card-image class="game-image" src="assets/img/wip.jpg" alt="">
+    <div class="game-logo">
+        <span>Game Logo</span>
+    </div>
 
+    <div class="game-details">
+        <form (ngSubmit)="saveGame()">
+            <mat-icon type="submit" (click)="saveGame()" class="top-right-icon" aria-hidden="false" aria-label="save"
+                fontIcon="save"></mat-icon>
+            <label for="title">Title</label>
+            <input [formControl]="gameForm.controls.name" type="text" id="title" />
 
-<h1> Game title</h1>
-<h2> Game name</h2>
-<h2> Game description</h2>
+            <label for="description">Description</label>
+            <input [formControl]="gameForm.controls.description" type="text" id="title" />
+
+            @if(isSaving){
+            <mat-spinner class="mat-spinner"> </mat-spinner>
+            }
+        </form>
+    </div>
+
+</div>
