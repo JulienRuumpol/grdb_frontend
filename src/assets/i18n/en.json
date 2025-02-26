@@ -1,0 +1,31 @@
+{
+    "app": {
+        "title": "GRDB"
+    },
+    "navbar": {
+        "language": {
+            "dutch": "Dutch",
+            "english": "English"
+        }
+    },
+    "home": {
+        "library": "Library"
+    },
+    "login": {
+        "login": "Login",
+        "email": "email",
+        "password": "password",
+        "invalidPassword": "Please enter a password",
+        "invalidEmail": "Invalid email",
+        "invalidLogin": "Invalid email and password"
+    },
+    "game": {
+        "detail": {},
+        "addModal": {
+            "game": "game",
+            "info": "Select a game to add to your list",
+            "games": "games",
+            "addGame": "Add game to library"
+        }
+    }
+}

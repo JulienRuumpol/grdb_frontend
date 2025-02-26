@@ -6,12 +6,13 @@ import { GameDto } from '../../models/dto/game.dto';
 import { Router } from '@angular/router';
 import { AddGameComponent } from '../../components/add-game/add-game.component';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-home-page',
   imports: [
     MatCard,
     MatCardImage,
-
+    TranslateModule
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'

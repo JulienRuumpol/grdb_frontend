@@ -11,6 +11,9 @@ import { LoginDto } from '../../models/dto/login.dto';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
 import { jwtDecode } from "jwt-decode";
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { TranslateModule } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-login-page',
@@ -24,6 +27,7 @@ import { jwtDecode } from "jwt-decode";
     ReactiveFormsModule,
     FormsModule,
     MatProgressSpinnerModule,
+    TranslateModule
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
@@ -46,7 +50,7 @@ export class LoginPageComponent {
   })
 
 
-  constructor(private authService: AuthService, private _router: Router) {
+  constructor(private authService: AuthService, private _router: Router, private jwtHelper: JwtHelperService) {
   }
 
   onSubmit() {
@@ -68,6 +72,7 @@ export class LoginPageComponent {
         const isExpired = token && token.exp ? token.exp < Date.now() / 100 : false;
 
         console.log('is epxred' + isExpired)
+        console.log('is repxired new way ' + this.jwtHelper.isTokenExpired(v))
         if (isExpired) {
           console.log('token is not expired' + token.exp)
         } else {
