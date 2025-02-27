@@ -8,6 +8,7 @@ import { jwtDecode } from "jwt-decode";
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -27,7 +28,7 @@ export class NavBarComponent implements OnInit {
 
   username: String = "nyi"
 
-  constructor(private _router: Router, private translate: TranslateService) { }
+  constructor(private _router: Router, private translate: TranslateService, private authservice: AuthService) { }
 
   ngOnInit(): void {
     let token: string = localStorage.getItem('token') || "nyis"
@@ -56,8 +57,11 @@ export class NavBarComponent implements OnInit {
   }
   logout() {
     //insert logic to log out user
-    alert('Not yet Implement');
     // this._router.navigate(['logout'])
+
+    this.authservice.logout();
+    this._router.navigate(['login'])
+
   }
 
   switchLanguage(language: string) {
