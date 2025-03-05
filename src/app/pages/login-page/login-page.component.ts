@@ -66,25 +66,6 @@ export class LoginPageComponent {
       next: (v) => {
         this._router.navigate(["home"])
 
-
-
-        let token = jwtDecode(v.token);
-        const isExpired = token && token.exp ? token.exp < Date.now() / 100 : false;
-
-        console.log('is epxred' + isExpired)
-        console.log('is repxired new way ' + this.jwtHelper.isTokenExpired(v))
-        if (isExpired) {
-          console.log('token is not expired' + token.exp)
-        } else {
-          console.log('token is exp expired')
-        }
-
-        console.log('login result is ' + JSON.stringify(v))
-        // console.log('expires at ' + expiresAt)
-        // localStorage.setItem('token', v.token)
-        // localStorage.setItem('expires_at', expiresAt)
-
-
       },
       error: (e) => {
         this.displayAuthError = true

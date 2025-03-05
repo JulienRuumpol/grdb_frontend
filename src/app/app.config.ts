@@ -41,5 +41,5 @@ export const appConfig: ApplicationConfig = {
 };
 
 export function tokenGetter() {
-  return localStorage.getItem("token");
+  return localStorage.getItem("ACCESS_TOKEN");
 }

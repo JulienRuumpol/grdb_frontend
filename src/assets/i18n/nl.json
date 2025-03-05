@@ -17,7 +17,8 @@
         "password": "Wachtwoord",
         "invalidPassword": "Vul een wachtwoord in",
         "invalidEmail": "Ongeldige email",
-        "invalidLogin": "Onbekend email en wachtwoord"
+        "invalidLogin": "Onbekend email en wachtwoord",
+        "InactiveLogoutMessage": "Je bent uitgelogd wegens inactiviteit"
     },
     "game": {
         "detail": {},

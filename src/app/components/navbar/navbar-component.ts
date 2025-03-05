@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { MatList } from '@angular/material/list'
-import { MatListItem } from '@angular/material/list';
 import { MatToolbar } from '@angular/material/toolbar';
 import { jwtDecode } from "jwt-decode";
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -14,8 +12,6 @@ import { AuthService } from '../../services/auth.service';
   selector: 'app-navbar',
   imports: [
     MatIcon,
-    MatList,
-    MatListItem,
     MatToolbar,
     TranslateModule,
     MatButtonModule,
@@ -31,11 +27,11 @@ export class NavBarComponent implements OnInit {
   constructor(private _router: Router, private translate: TranslateService, private authservice: AuthService) { }
 
   ngOnInit(): void {
-    let token: string = localStorage.getItem('token') || "nyis"
+    // let token: string = localStorage.getItem('ACCES_TOKEN') || "nyis"
 
-    let decodedToken = jwtDecode(token);
+    // let decodedToken = jwtDecode(token);
 
-    this.username = decodedToken.iss || "blaba"
+    // this.username = decodedToken.iss || "blaba"
 
 
   }

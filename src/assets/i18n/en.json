@@ -17,7 +17,8 @@
         "password": "password",
         "invalidPassword": "Please enter a password",
         "invalidEmail": "Invalid email",
-        "invalidLogin": "Invalid email and password"
+        "invalidLogin": "Invalid email and password",
+        "InactiveLogoutMessage": "You've been logged out due to inactivity"
     },
     "game": {
         "detail": {},

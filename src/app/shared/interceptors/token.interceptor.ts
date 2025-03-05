@@ -1,46 +1,57 @@
-import { HttpInterceptorFn } from '@angular/common/http';
-import { JwtHelperService } from '@auth0/angular-jwt';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpHandlerFn, HttpInterceptor, HttpInterceptorFn, HttpRequest } from '@angular/common/http';
 import { AuthService } from '../../services/auth.service';
 import { inject } from '@angular/core';
+import { catchError, Observable, switchMap, take, throwError } from 'rxjs';
 
 
 
 export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
+  const authService = inject(AuthService);
 
-  const helper = new JwtHelperService();
-  const authService = inject(AuthService)
+  let authReq = req;
+  let token = authService.getAccessToken()
 
-  //retrieve token  
-  // const token = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqYW5AamFuLm5sIiwiaWF0IjoxNzQwMzg1MjI3LCJleHAiOjUzNDAzODUyMjd9.4bjc_hljwNBACmCPbiNYbwWzvoP72afl1_MovfIW5L9SEqxT3l3ml6vvcgMqnUu3MHNevfFdrdsYXUcQ3B_I3A'
-
-
-
-  // localStorage.setItem('token', token);
-
-  if (localStorage.getItem('token')) {
-
+  if (req.url.includes('/auth/refresh')) {
+    return next(req);
   }
 
-  const jwtToken = getJwtToken()
-
-  if (jwtToken) {
-    const newReq = req.clone({
-      setHeaders: { Authorization: `Bearer ${jwtToken}` }
-    });
-    return next(newReq)
+  if (token) {
+    authReq = addToken(authReq, token)
   }
 
-
-  return next(req);
-};
-
-
-function getJwtToken(): string | null {
-  return localStorage.getItem('JWT_TOKEN')
+  return next(authReq).pipe(
+    catchError((error) => {
+      if (error instanceof HttpErrorResponse && error.status === 401) {
+        return handle401Error(authService, req, next);
+      }
+      return throwError(() => error);
+    })
+  );
 }
 
+const handle401Error = (authService: AuthService, request: HttpRequest<any>, next: HttpHandlerFn): Observable<HttpEvent<any>> => {
+  if (authService.isRefreshing) {
+    return authService.refreshSubject.asObservable().pipe(
+      take(1),
+      switchMap((newToken) => {
+        return next(request.clone({ setHeaders: { Authorization: `Bearer ${newToken}` } }));
+      })
+    );
+  } else {
+    return authService.refreshToken().pipe(
+      switchMap((newToken: string) => {
+        return next(request.clone({ setHeaders: { Authorization: `Bearer ${newToken}` } }));
+      }),
+      catchError((err) => {
+        authService.inactiveLogout();
+        return throwError(() => err);
+      })
+    );
+  }
+};
 
-
-function handle403Error() {
-
+function addToken(req: HttpRequest<any>, token: string) {
+  return req.clone({
+    setHeaders: { Authorization: `Bearer ${token}` }
+  });
 }

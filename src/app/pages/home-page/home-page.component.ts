@@ -47,7 +47,7 @@ export class HomePageComponent implements OnInit {
         this.games = v;
       },
       error: (e) => {
-        console.log('error at ' + JSON.stringify(e))
+        console.log('error home page at ' + JSON.stringify(e))
       },
       complete: () => {
       }
