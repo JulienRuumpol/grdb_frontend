@@ -9,7 +9,7 @@ export const routes: Routes = [
         path: 'login', component: LoginPageComponent
     },
     {
-        path: 'userRole', component: NyiComponent,
+        path: 'userRole', component: NyiComponent, canActivate: [authGuard]
     },
     {
         path: 'home', component: HomePageComponent, canActivate: [authGuard]
@@ -18,7 +18,7 @@ export const routes: Routes = [
         path: 'logout', component: NyiComponent
     },
     {
-        path: 'account', component: NyiComponent
+        path: 'account', component: NyiComponent, canActivate: [authGuard]
     }
 
 ];

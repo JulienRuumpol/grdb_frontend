@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AddGameComponent } from '../../components/add-game/add-game.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-home-page',
   imports: [
@@ -23,7 +24,7 @@ export class HomePageComponent implements OnInit {
 
 
 
-  constructor(private userService: UserService, private _router: Router) { }
+  constructor(private userService: UserService, private _router: Router, private authService: AuthService) { }
   ngOnInit(): void {
     this.getUserGameData()
   }

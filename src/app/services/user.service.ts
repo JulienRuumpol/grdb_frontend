@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, map } from 'rxjs';
+import { BehaviorSubject, Observable, map } from 'rxjs';
 import { GameDto } from '../models/dto/game.dto';
 
 @Injectable({
@@ -8,6 +8,7 @@ import { GameDto } from '../models/dto/game.dto';
 })
 export class UserService {
   private appurl = 'http://localhost:8080/user'
+  authenticatedSubjectDetails = new BehaviorSubject<any>("");
 
   constructor(private http: HttpClient) { }
 
@@ -31,6 +32,7 @@ export class UserService {
     )
   }
 
+
   addGameToUser(userId: number, gameId: number): Observable<any> {
 
     let emptybody = {
@@ -40,5 +42,18 @@ export class UserService {
     }
     return this.http.post(this.appurl + "/" + userId + "/game/" + gameId, emptybody)
 
+  }
+
+  //  implement a call to get current authenticated user
+  getCurrentAuthenticatedUserInformation(email: String) {
+    return this.http.get(this.appurl + "/" + email).subscribe({
+      next: (v) => {
+        this.authenticatedSubjectDetails.next(v)
+      },
+      error: (e) => {
+      },
+      complete: () => {
+      }
+    })
   }
 }

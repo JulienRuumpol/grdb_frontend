@@ -5,6 +5,7 @@ import { LoginDto } from '../models/dto/login.dto';
 import { jwtDecode } from 'jwt-decode';
 import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,12 +15,15 @@ export class AuthService {
 
   private readonly ACCESS_TOKEN = 'ACCESS_TOKEN'
   private readonly REFRESH_TOKEN = "REFRESH_TOKEN"
-  private loggedUser?: String;
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
-  isRefreshing = false;
-  refreshSubject = new BehaviorSubject<string | null>(null); // Hold pending requests
+  loggedUserEmail: string = ""
+  private isAuthenticatedSubject = new BehaviorSubject<any>(false);
+  authenticatedSubject = new BehaviorSubject<any>("");
 
-  constructor(private http: HttpClient, private router: Router, private translateService: TranslateService) { }
+  isRefreshing = false;
+  refreshSubject = new BehaviorSubject<string | null>(null);
+  loginData = this.isAuthenticatedSubject.asObservable();
+
+  constructor(private http: HttpClient, private router: Router, private translateService: TranslateService, private userService: UserService) { }
 
   login(loginDto: LoginDto): Observable<any> {
     return this.http.post(this.appurl + "/login", loginDto).pipe(
@@ -28,12 +32,11 @@ export class AuthService {
   }
 
 
-  //todo rename method
   private loginUserIntoApp(email: any, token: any) {
-    this.loggedUser = email,
+    this.loggedUserEmail = email,
       this.storeAccesToken(token.accessToken)
     this.storeRefreshToken(token.refreshToken)
-    this.isAuthenticatedSubject.next(true)
+    this.isAuthenticatedSubject.next(email)
   }
 
   private storeAccesToken(token: string) {
@@ -55,6 +58,8 @@ export class AuthService {
     localStorage.removeItem(this.ACCESS_TOKEN)
     localStorage.removeItem(this.REFRESH_TOKEN)
     this.isAuthenticatedSubject.next(false)
+    this.authenticatedSubject.next('')
+    this.removeUserAuthenticationDetail()
     this.router.navigate(['login'])
   }
 
@@ -62,6 +67,7 @@ export class AuthService {
     localStorage.removeItem(this.ACCESS_TOKEN)
     localStorage.removeItem(this.REFRESH_TOKEN)
     this.isAuthenticatedSubject.next(false)
+    this.removeUserAuthenticationDetail()
     this.router.navigate(['login'])
     this.translateService.get('login.InactiveLogoutMessage', { value: 'InactiveLogoutMessage' }).subscribe((translation: string) => {
       alert(translation)
@@ -70,10 +76,10 @@ export class AuthService {
 
   }
 
-  //  implement a call to get current authenticated user
-  getCurrentAuthenticatedUser() {
-
+  removeUserAuthenticationDetail() {
+    this.userService.authenticatedSubjectDetails.next('')
   }
+
   isLoggedIn() {
     return !!localStorage.getItem(this.ACCESS_TOKEN)
   }

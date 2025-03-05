@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 import { jwtDecode } from "jwt-decode";
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { TranslateModule } from '@ngx-translate/core';
+import { UserService } from '../../services/user.service';
 
 
 @Component({
@@ -50,7 +51,7 @@ export class LoginPageComponent {
   })
 
 
-  constructor(private authService: AuthService, private _router: Router, private jwtHelper: JwtHelperService) {
+  constructor(private authService: AuthService, private _router: Router, private jwtHelper: JwtHelperService, private userService: UserService) {
   }
 
   onSubmit() {
@@ -65,6 +66,8 @@ export class LoginPageComponent {
     this.authService.login(this.logindata).subscribe({
       next: (v) => {
         this._router.navigate(["home"])
+        this.userService.getCurrentAuthenticatedUserInformation(this.logindata.email)
+
 
       },
       error: (e) => {

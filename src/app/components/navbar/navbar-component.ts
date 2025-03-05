@@ -7,6 +7,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -24,7 +25,7 @@ export class NavBarComponent implements OnInit {
 
   username: String = "nyi"
 
-  constructor(private _router: Router, private translate: TranslateService, private authservice: AuthService) { }
+  constructor(private _router: Router, private translate: TranslateService, private authservice: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
     // let token: string = localStorage.getItem('ACCES_TOKEN') || "nyis"
@@ -33,6 +34,16 @@ export class NavBarComponent implements OnInit {
 
     // this.username = decodedToken.iss || "blaba"
 
+
+
+
+    this.userService.authenticatedSubjectDetails.subscribe(user => {
+      this.username = user.userName
+      console.log('registered new username info ' + user.userName)
+      console.log('registered new username info ' + JSON.stringify(user))
+
+    })
+    // this.userService.getCurrentAuthenticatedUserInformation(this.authservice.loggedUserEmail)
 
   }
 
