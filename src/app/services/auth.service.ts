@@ -20,7 +20,6 @@ export class AuthService {
 
   isRefreshing = false;
   refreshSubject = new BehaviorSubject<string | null>(null);
-  loginData = this.isAuthenticatedSubject.asObservable();
 
   constructor(private http: HttpClient, private router: Router, private translateService: TranslateService, private userService: UserService) { }
 
@@ -31,8 +30,8 @@ export class AuthService {
   }
 
   private loginUserIntoApp(email: any, token: any) {
-    this.loggedUserEmail = email,
-      this.storeAccesToken(token.accessToken)
+    this.loggedUserEmail = email
+    this.storeAccesToken(token.accessToken)
     this.storeRefreshToken(token.refreshToken)
     this.isAuthenticatedSubject.next(email)
   }
