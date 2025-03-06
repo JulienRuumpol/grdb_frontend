@@ -32,7 +32,6 @@ export class UserService {
     )
   }
 
-
   addGameToUser(userId: number, gameId: number): Observable<any> {
 
     let emptybody = {
@@ -44,7 +43,6 @@ export class UserService {
 
   }
 
-  //  implement a call to get current authenticated user
   getCurrentAuthenticatedUserInformation(email: String) {
     return this.http.get(this.appurl + "/" + email).subscribe({
       next: (v) => {
