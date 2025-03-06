@@ -30,7 +30,6 @@ export class AuthService {
     )
   }
 
-
   private loginUserIntoApp(email: any, token: any) {
     this.loggedUserEmail = email,
       this.storeAccesToken(token.accessToken)
@@ -70,8 +69,6 @@ export class AuthService {
     this.translateService.get('login.InactiveLogoutMessage', { value: 'InactiveLogoutMessage' }).subscribe((translation: string) => {
       alert(translation)
     })
-
-
   }
 
   removeUserAuthenticationDetail() {
@@ -96,14 +93,13 @@ export class AuthService {
   }
 
   refreshToken(): Observable<string> {
-
     if (!this.isRefreshing) {
       this.isRefreshing = true;
 
       const refreshToken = this.getRefreshToken();
 
       const authHeader = new HttpHeaders({
-        Authorization: `Bearer ${refreshToken}`, // Include refresh token in header
+        Authorization: `Bearer ${refreshToken}`,
       });
 
       return this.http.get<{ accessToken: string }>(this.appurl + '/refresh', {
@@ -116,9 +112,9 @@ export class AuthService {
         map(response => response.accessToken),
         finalize(() => {
           this.isRefreshing = false
-        })// Extract the string token
+        })//  
       );
     }
-    return new Observable<string>(); // Prevent multiple refresh calls
+    return new Observable<string>();
   }
 }
