@@ -1,0 +1,32 @@
+{
+    "app": {
+        "title": "GRDB"
+    },
+    "navbar": {
+        "language": {
+            "dutch": "Dutch",
+            "english": "English"
+        }
+    },
+    "home": {
+        "library": "Library"
+    },
+    "login": {
+        "login": "Login",
+        "email": "Email",
+        "password": "Password",
+        "invalidPassword": "Please enter a password",
+        "invalidEmail": "Invalid email",
+        "invalidLogin": "Invalid email and password",
+        "InactiveLogoutMessage": "You've been logged out due to inactivity"
+    },
+    "game": {
+        "detail": {},
+        "addModal": {
+            "game": "game",
+            "info": "Select a game to add to your list",
+            "games": "games",
+            "addGame": "Add game to library"
+        }
+    }
+}

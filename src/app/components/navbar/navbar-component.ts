@@ -1,24 +1,37 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { MatList } from '@angular/material/list'
-import { MatListItem } from '@angular/material/list';
 import { MatToolbar } from '@angular/material/toolbar';
+import { jwtDecode } from "jwt-decode";
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { AuthService } from '../../services/auth.service';
+import { UserService } from '../../services/user.service';
+
 @Component({
   selector: 'app-navbar',
   imports: [
     MatIcon,
-    MatList,
-    MatListItem,
-    MatToolbar
+    MatToolbar,
+    TranslateModule,
+    MatButtonModule,
+    MatMenuModule
   ],
   templateUrl: './navbar-component.html',
   styleUrl: './navbar-component.css'
 })
-export class NavBarComponent {
+export class NavBarComponent implements OnInit {
 
+  username: String = "nyi"
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private translate: TranslateService, private authservice: AuthService, private userService: UserService) { }
+
+  ngOnInit(): void {
+    this.userService.authenticatedSubjectDetails.subscribe(user => {
+      this.username = user.userName
+    })
+  }
 
   navigateToUserRole() {
     // implement code to route to /userRole
@@ -36,13 +49,11 @@ export class NavBarComponent {
     this._router.navigate(['account'])
   }
   logout() {
-    //insert logic to log out user
-    alert('Not yet Implement');
-    // this._router.navigate(['logout'])
+    this.authservice.logout();
+    this._router.navigate(['login'])
   }
 
-  switchLanguage() {
-    //implement logic for switching language
-    alert('Not yet Implement');
+  switchLanguage(language: string) {
+    this.translate.use(language);
   }
 }

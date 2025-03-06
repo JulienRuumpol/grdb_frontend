@@ -6,12 +6,14 @@ import { GameDto } from '../../models/dto/game.dto';
 import { Router } from '@angular/router';
 import { AddGameComponent } from '../../components/add-game/add-game.component';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
+import { AuthService } from '../../services/auth.service';
 @Component({
   selector: 'app-home-page',
   imports: [
     MatCard,
     MatCardImage,
-
+    TranslateModule
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
@@ -22,7 +24,7 @@ export class HomePageComponent implements OnInit {
 
 
 
-  constructor(private userService: UserService, private _router: Router) { }
+  constructor(private userService: UserService, private _router: Router, private authService: AuthService) { }
   ngOnInit(): void {
     this.getUserGameData()
   }
@@ -45,7 +47,7 @@ export class HomePageComponent implements OnInit {
         this.games = v;
       },
       error: (e) => {
-        console.log('error at ' + JSON.stringify(e))
+        console.log('error home page at ' + JSON.stringify(e))
       },
       complete: () => {
       }
