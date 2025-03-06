@@ -1,0 +1,32 @@
+{
+    "app": {
+        "title": "GRDB"
+    },
+    "navbar": {
+        "language": {
+            "dutch": "Nederlands",
+            "english": "Engels"
+        }
+    },
+    "home": {
+        "library": "Bibliotheek"
+    },
+    "login": {
+        "login": "Login",
+        "email": "Email",
+        "password": "Wachtwoord",
+        "invalidPassword": "Vul een wachtwoord in",
+        "invalidEmail": "Ongeldige email",
+        "invalidLogin": "Onbekend email en wachtwoord",
+        "InactiveLogoutMessage": "Je bent uitgelogd wegens inactiviteit"
+    },
+    "game": {
+        "detail": {},
+        "addModal": {
+            "game": "game",
+            "info": "Selecteer een game die je wilt toevoegaan aan je lijst",
+            "games": "games",
+            "addGame": "Voeg game toe aan bibliotheek"
+        }
+    }
+}

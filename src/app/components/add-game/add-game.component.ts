@@ -8,6 +8,7 @@ import { ReplaySubject, Subject, take, takeUntil } from 'rxjs';
 import { UserService } from '../../services/user.service';
 import { GameDto } from '../../models/dto/game.dto';
 import { MatIcon } from '@angular/material/icon';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-game',
@@ -17,7 +18,8 @@ import { MatIcon } from '@angular/material/icon';
     MatFormFieldModule,
     NgxMatSelectSearchModule,
     ReactiveFormsModule,
-    MatIcon
+    MatIcon,
+    TranslateModule
 
   ],
   templateUrl: './add-game.component.html',

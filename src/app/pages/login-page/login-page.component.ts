@@ -10,6 +10,11 @@ import { AuthService } from '../../services/auth.service';
 import { LoginDto } from '../../models/dto/login.dto';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Router } from '@angular/router';
+import { jwtDecode } from "jwt-decode";
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { TranslateModule } from '@ngx-translate/core';
+import { UserService } from '../../services/user.service';
+
 
 @Component({
   selector: 'app-login-page',
@@ -22,7 +27,8 @@ import { Router } from '@angular/router';
     MatToolbar,
     ReactiveFormsModule,
     FormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    TranslateModule
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'
@@ -45,7 +51,7 @@ export class LoginPageComponent {
   })
 
 
-  constructor(private authService: AuthService, private _router: Router) {
+  constructor(private authService: AuthService, private _router: Router, private jwtHelper: JwtHelperService, private userService: UserService) {
   }
 
   onSubmit() {
@@ -60,6 +66,11 @@ export class LoginPageComponent {
     this.authService.login(this.logindata).subscribe({
       next: (v) => {
         this._router.navigate(["home"])
+
+        let tokenInfo: any = jwtDecode(v.accessToken)
+        this.userService.getCurrentAuthenticatedUserInformation(tokenInfo.id)
+
+
       },
       error: (e) => {
         this.displayAuthError = true
@@ -92,3 +103,7 @@ export class LoginPageComponent {
   }
 
 }
+function moment() {
+  throw new Error('Function not implemented.');
+}
+
