@@ -28,23 +28,9 @@ export class NavBarComponent implements OnInit {
   constructor(private _router: Router, private translate: TranslateService, private authservice: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
-    // let token: string = localStorage.getItem('ACCES_TOKEN') || "nyis"
-
-    // let decodedToken = jwtDecode(token);
-
-    // this.username = decodedToken.iss || "blaba"
-
-
-
-
     this.userService.authenticatedSubjectDetails.subscribe(user => {
       this.username = user.userName
-      console.log('registered new username info ' + user.userName)
-      console.log('registered new username info ' + JSON.stringify(user))
-
     })
-    // this.userService.getCurrentAuthenticatedUserInformation(this.authservice.loggedUserEmail)
-
   }
 
   navigateToUserRole() {
@@ -63,17 +49,11 @@ export class NavBarComponent implements OnInit {
     this._router.navigate(['account'])
   }
   logout() {
-    //insert logic to log out user
-    // this._router.navigate(['logout'])
-
     this.authservice.logout();
     this._router.navigate(['login'])
-
   }
 
   switchLanguage(language: string) {
     this.translate.use(language);
-
-    //todo update user call when Able to get user ID from localstorage
   }
 }

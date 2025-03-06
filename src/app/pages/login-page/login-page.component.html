@@ -7,7 +7,8 @@
             <mat-error>{{'login.invalidEmail' | translate}}</mat-error>
             }
             <mat-form-field>
-                <input [formControl]="loginForm.controls.email" matInput placeholder="email" id="email" name="email">
+                <input [formControl]="loginForm.controls.email" matInput placeholder="{{'login.email' | translate}}"
+                    id="email" name="email">
 
             </mat-form-field>
 
@@ -15,8 +16,8 @@
             <mat-error>{{'login.invalidPassword' | translate}}</mat-error>
             }
             <mat-form-field>
-                <input [formControl]="loginForm.controls.password" matInput type="password" placeholder="password"
-                    id="password" name="password">
+                <input [formControl]="loginForm.controls.password" matInput type="password"
+                    placeholder="{{'login.password' | translate}}" id="password" name="password">
             </mat-form-field>
 
             @if (displayAuthError) {

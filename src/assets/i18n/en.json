@@ -13,8 +13,8 @@
     },
     "login": {
         "login": "Login",
-        "email": "email",
-        "password": "password",
+        "email": "Email",
+        "password": "Password",
         "invalidPassword": "Please enter a password",
         "invalidEmail": "Invalid email",
         "invalidLogin": "Invalid email and password",

@@ -17,7 +17,6 @@ export class AuthService {
   private readonly REFRESH_TOKEN = "REFRESH_TOKEN"
   loggedUserEmail: string = ""
   private isAuthenticatedSubject = new BehaviorSubject<any>(false);
-  authenticatedSubject = new BehaviorSubject<any>("");
 
   isRefreshing = false;
   refreshSubject = new BehaviorSubject<string | null>(null);
@@ -58,7 +57,6 @@ export class AuthService {
     localStorage.removeItem(this.ACCESS_TOKEN)
     localStorage.removeItem(this.REFRESH_TOKEN)
     this.isAuthenticatedSubject.next(false)
-    this.authenticatedSubject.next('')
     this.removeUserAuthenticationDetail()
     this.router.navigate(['login'])
   }

@@ -66,7 +66,9 @@ export class LoginPageComponent {
     this.authService.login(this.logindata).subscribe({
       next: (v) => {
         this._router.navigate(["home"])
-        this.userService.getCurrentAuthenticatedUserInformation(this.logindata.email)
+
+        let tokenInfo: any = jwtDecode(v.accessToken)
+        this.userService.getCurrentAuthenticatedUserInformation(tokenInfo.id)
 
 
       },
