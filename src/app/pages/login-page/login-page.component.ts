@@ -73,6 +73,8 @@ export class LoginPageComponent {
 
       },
       error: (e) => {
+        console.log('routing to fdsfas')
+
         this.displayAuthError = true
         this.isLoggingIn = false
       },

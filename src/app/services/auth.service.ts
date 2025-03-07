@@ -16,6 +16,7 @@ export class AuthService {
   private readonly ACCESS_TOKEN = 'ACCESS_TOKEN'
   private readonly REFRESH_TOKEN = "REFRESH_TOKEN"
   loggedUserEmail: string = ""
+  loggedInUserInformation: any = ''
   private isAuthenticatedSubject = new BehaviorSubject<any>(false);
 
   isRefreshing = false;
@@ -33,6 +34,7 @@ export class AuthService {
     this.loggedUserEmail = email
     this.storeAccesToken(token.accessToken)
     this.storeRefreshToken(token.refreshToken)
+    this.loggedInUserInformation = jwtDecode(token.accessToken)
     this.isAuthenticatedSubject.next(email)
   }
 

@@ -4,13 +4,14 @@ import { NyiComponent } from './pages/nyi/nyi.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { authGuard } from './shared/guards/auth.guard';
 import { GameDetailComponent } from './pages/game-detail/game-detail.component';
+import { adminGuard } from './shared/guards/admin.guard';
 
 export const routes: Routes = [
     {
         path: 'login', component: LoginPageComponent
     },
     {
-        path: 'userRole', component: NyiComponent, canActivate: [authGuard]
+        path: 'userRole', component: NyiComponent, canActivate: [authGuard, adminGuard]
     },
     {
         path: 'home', component: HomePageComponent, canActivate: [authGuard]

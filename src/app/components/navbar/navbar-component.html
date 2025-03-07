@@ -9,8 +9,8 @@
     <span class="fill-space"></span>
     <p> {{username}}
     <p>
-        <mat-icon class="navbar-icon" (click)="navigateToUserRole()" aria-hidden="false" aria-label="Example home icon"
-            fontIcon="manage_accounts"></mat-icon>
+        @if(isAdmin){ <mat-icon class="navbar-icon" (click)="navigateToUserRole()" aria-hidden="false"
+            aria-label="Example home icon" fontIcon="manage_accounts"></mat-icon>}
         <mat-icon [matMenuTriggerFor]="menu" class="navbar-icon-right" aria-hidden="false"
             aria-label="Example language icon" fontIcon="language"></mat-icon>
 

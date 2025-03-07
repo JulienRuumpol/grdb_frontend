@@ -1,3 +1,5 @@
+<mat-icon class="navbar-icon-right" aria-hidden="false" aria-label="exit" fontIcon="close" class="close-button"
+    (click)="returnToPreviousPage()"></mat-icon>
 <div class="game-info-container">
 
     <div class="game-logo">
@@ -6,9 +8,13 @@
 
     <div class="game-details">
         <form (ngSubmit)="saveGame()">
-            <mat-icon type="submit" (click)="saveGame()" class="top-right-icon" aria-hidden="false" aria-label="save"
-                fontIcon="save"></mat-icon>
-            <label for="title">Title</label>
+
+            <label for="title">Title
+
+                @if(isAdmin){<mat-icon type="submit" (click)="saveGame()" class="top-right-icon" aria-hidden="false"
+                    aria-label="save" fontIcon="save">
+
+                </mat-icon>}</label>
             <input [formControl]="gameForm.controls.name" type="text" id="title" />
 
             <label for="description">Description</label>

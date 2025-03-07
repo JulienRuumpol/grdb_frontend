@@ -24,12 +24,17 @@ import { UserService } from '../../services/user.service';
 export class NavBarComponent implements OnInit {
 
   username: String = "nyi"
+  isAdmin: boolean = false
 
   constructor(private _router: Router, private translate: TranslateService, private authservice: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.userService.authenticatedSubjectDetails.subscribe(user => {
       this.username = user.userName
+
+      if (this.authservice.loggedInUserInformation.role == 'Admin') this.isAdmin = true
+
+
     })
   }
 

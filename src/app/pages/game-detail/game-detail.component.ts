@@ -13,6 +13,8 @@ import {
   MatSnackBarRef,
 } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
+import { AuthService } from '../../services/auth.service';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -27,10 +29,9 @@ import { SnackbarComponent } from '../../components/snackbar/snackbar.component'
 })
 export class GameDetailComponent implements OnInit {
 
+  isAdmin = false;
   isSaving: Boolean = false;
   private _snackBar = inject(MatSnackBar);
-
-
   game: GameDto = {
     id: 0,
     name: "",
@@ -46,7 +47,7 @@ export class GameDetailComponent implements OnInit {
     ])
   })
 
-  constructor(private gameService: GameService, private route: ActivatedRoute, public snackBar: MatSnackBar) { }
+  constructor(private gameService: GameService, private route: ActivatedRoute, public snackBar: MatSnackBar, private authService: AuthService, private location: Location) { }
 
 
 
@@ -56,20 +57,18 @@ export class GameDetailComponent implements OnInit {
       gameId = param['id']
     })
 
-    console.log('we init for id ' + gameId)
+    this.checkIsUserAdmin()
 
     this.gameService.getGameDetail(gameId).subscribe({
       next: (v) => {
         this.game = v;
-        console.log("game " + JSON.stringify(this.game))
 
         this.gameForm.controls.name.setValue(this.game.name)
         this.gameForm.controls.description.setValue(this.game.description)
 
       },
       error: (e) => {
-        console.log('error at ' + JSON.stringify(e))
-        console.log('error ' + e)
+        console.log('error at game detail ' + JSON.stringify(e))
       },
       complete: () => {
       }
@@ -84,11 +83,6 @@ export class GameDetailComponent implements OnInit {
     }
     this.setIsSaving(true)
 
-
-
-
-    console.log('data of the new game is ' + JSON.stringify(this.game))
-    console.log('newgame ' + JSON.stringify(newGame))
     this.gameService.updateGame(newGame).subscribe({
       next: (v) => {
         this.game = v
@@ -114,5 +108,21 @@ export class GameDetailComponent implements OnInit {
 
   setIsSaving(value: Boolean) {
     this.isSaving = value
+  }
+
+  checkIsUserAdmin() {
+    let userRole = this.authService.loggedInUserInformation.role
+
+    if (userRole == 'Admin') {
+      this.isAdmin = true
+    } else {
+      this.isAdmin = false
+      this.gameForm.controls.name.disable()
+      this.gameForm.controls.description.disable()
+    }
+  }
+
+  returnToPreviousPage() {
+    this.location.back()
   }
 }
