@@ -69,11 +69,8 @@ export class LoginPageComponent {
 
         let tokenInfo: any = jwtDecode(v.accessToken)
         this.userService.getCurrentAuthenticatedUserInformation(tokenInfo.id)
-
-
       },
       error: (e) => {
-        console.log('routing to fdsfas')
 
         this.displayAuthError = true
         this.isLoggingIn = false
@@ -105,7 +102,5 @@ export class LoginPageComponent {
   }
 
 }
-function moment() {
-  throw new Error('Function not implemented.');
-}
+
 

@@ -37,9 +37,6 @@ export class NavBarComponent implements OnInit {
 
       this.username = this.authservice.loggedInUserInformation.username
       this.isLoggedIn = this.authservice.isLoggedIn()
-      console.log('logged in from auth service is ' + this.authservice.isLoggedIn())
-      console.log('boolean value is  ' + this.isLoggedIn)
-
 
       if (this.authservice.loggedInUserInformation.role == 'Admin') this.isAdmin = true
 
@@ -72,6 +69,7 @@ export class NavBarComponent implements OnInit {
 
   navigateToUserRole() {
     // implement code to route to /userRole
+    alert('nyi')
 
     this._router.navigate(['userRole'])
   }

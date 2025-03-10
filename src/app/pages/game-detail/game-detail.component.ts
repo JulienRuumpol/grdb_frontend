@@ -90,7 +90,7 @@ export class GameDetailComponent implements OnInit {
         this.openSaveSuccesSnackbar()
       },
       error: (e) => {
-        console.log('error at ' + JSON.stringify(e))
+        console.log('error at game-detail page' + JSON.stringify(e))
       },
       complete: () => {
         this.setIsSaving(false)
@@ -113,8 +113,6 @@ export class GameDetailComponent implements OnInit {
   checkIsUserAdmin() {
     this.authService.refreshLoggedInUserInformation()
     let userRole = this.authService.loggedInUserInformation.role
-
-    console.log('user role is ' + userRole)
 
     if (userRole == 'Admin') {
       this.isAdmin = true

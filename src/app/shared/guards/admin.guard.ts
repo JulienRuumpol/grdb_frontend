@@ -11,7 +11,7 @@ export const adminGuard: CanActivateFn = (route, state) => {
 
   if (token) {
     let tokenDecoded: any = jwtDecode(token);
-    if (tokenDecoded.role == 'admin') return true
+    if (tokenDecoded.role == 'Admin') return true
   }
 
   return false;

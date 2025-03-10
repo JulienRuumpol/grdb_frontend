@@ -11,6 +11,7 @@
     <p>
         @if(isAdmin){ <mat-icon class="navbar-icon" (click)="navigateToUserRole()" aria-hidden="false"
             aria-label="Example home icon" fontIcon="manage_accounts"></mat-icon>}
+
         <mat-icon [matMenuTriggerFor]="menu" class="navbar-icon-right" aria-hidden="false"
             aria-label="Example language icon" fontIcon="language"></mat-icon>
 
@@ -20,10 +21,10 @@
         </mat-menu>
 
         @if (isLoggedIn) { <mat-icon class="navbar-icon-right" (click)="navigateToUserDetailScreen()"
-            aria-hidden="false" aria-label="Example account circle icon" fontIcon="account_circle"></mat-icon>}
+            aria-hidden="false" aria-label="Example account circle icon" fontIcon="account_circle"></mat-icon>
 
 
         <mat-icon class="navbar-icon-right" (click)="logout()" aria-hidden="false" aria-label="Example logout icon"
-            fontIcon="logout"></mat-icon>
+            fontIcon="logout"></mat-icon>}
 
 </mat-toolbar>
