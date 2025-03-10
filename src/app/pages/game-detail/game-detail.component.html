@@ -1,0 +1,31 @@
+<mat-icon class="navbar-icon-right" aria-hidden="false" aria-label="exit" fontIcon="close" class="close-button"
+    (click)="returnToPreviousPage()"></mat-icon>
+<div class="game-info-container">
+
+    <div class="game-logo">
+        <img mat-card-image class="game-image" src="assets/img/wip.jpg" alt="">
+    </div>
+
+    <div class="game-details">
+        <form (ngSubmit)="saveGame()">
+
+            <label for="title"> {{'game.detail.title' | translate}}
+
+
+                @if(isAdmin){<mat-icon type="submit" (click)="saveGame()" class="top-right-icon" aria-hidden="false"
+                    aria-label="save" fontIcon="save">
+
+                </mat-icon>}</label>
+            <input [formControl]="gameForm.controls.name" type="text" id="title" />
+
+            <label for="description"> {{'game.detail.description' | translate}}
+            </label>
+            <input [formControl]="gameForm.controls.description" type="text" id="title" />
+
+            @if(isSaving){
+            <mat-spinner class="mat-spinner"> </mat-spinner>
+            }
+        </form>
+    </div>
+
+</div>

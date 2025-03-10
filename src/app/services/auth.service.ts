@@ -16,7 +16,8 @@ export class AuthService {
   private readonly ACCESS_TOKEN = 'ACCESS_TOKEN'
   private readonly REFRESH_TOKEN = "REFRESH_TOKEN"
   loggedUserEmail: string = ""
-  private isAuthenticatedSubject = new BehaviorSubject<any>(false);
+  loggedInUserInformation: any = ''
+  isAuthenticatedSubject = new BehaviorSubject<any>(false);
 
   isRefreshing = false;
   refreshSubject = new BehaviorSubject<string | null>(null);
@@ -33,7 +34,14 @@ export class AuthService {
     this.loggedUserEmail = email
     this.storeAccesToken(token.accessToken)
     this.storeRefreshToken(token.refreshToken)
+    this.loggedInUserInformation = jwtDecode(token.accessToken)
     this.isAuthenticatedSubject.next(email)
+  }
+
+  refreshLoggedInUserInformation() {
+    let token: any = this.getAccessToken()
+    this.loggedInUserInformation = jwtDecode(token)
+
   }
 
   private storeAccesToken(token: string) {
@@ -57,6 +65,7 @@ export class AuthService {
     this.isAuthenticatedSubject.next(false)
     this.removeUserAuthenticationDetail()
     this.router.navigate(['login'])
+    this.loggedInUserInformation = ""
   }
 
   inactiveLogout() {

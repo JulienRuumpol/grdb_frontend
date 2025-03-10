@@ -23,18 +23,53 @@ import { UserService } from '../../services/user.service';
 })
 export class NavBarComponent implements OnInit {
 
-  username: String = "nyi"
+  username: String = ""
+  isAdmin: boolean = false
+  isLoggedIn: boolean = false
 
   constructor(private _router: Router, private translate: TranslateService, private authservice: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
+
     this.userService.authenticatedSubjectDetails.subscribe(user => {
-      this.username = user.userName
+
+      this.authservice.refreshLoggedInUserInformation()
+
+      this.username = this.authservice.loggedInUserInformation.username
+      this.isLoggedIn = this.authservice.isLoggedIn()
+
+      if (this.authservice.loggedInUserInformation.role == 'Admin') this.isAdmin = true
+
     })
+
+
+    this.authservice.isAuthenticatedSubject.subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        this.isLoggedIn = true
+      }
+      else {
+        this.username = ""
+        this.isAdmin = false
+        this.isLoggedIn = false
+      }
+
+
+    })
+    this.configureRefresh()
+
+  }
+
+  private configureRefresh() {
+    this.isLoggedIn = this.authservice.isLoggedIn()
+    this.username = this.authservice.loggedInUserInformation.username
+    this.isLoggedIn = this.authservice.isLoggedIn()
+    if (this.authservice.loggedInUserInformation.role == 'Admin') this.isAdmin = true
+
   }
 
   navigateToUserRole() {
     // implement code to route to /userRole
+    alert('nyi')
 
     this._router.navigate(['userRole'])
   }

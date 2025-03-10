@@ -21,7 +21,11 @@
         "InactiveLogoutMessage": "You've been logged out due to inactivity"
     },
     "game": {
-        "detail": {},
+        "detail": {
+            "description": "Description",
+            "title": "Title",
+            "saveSucces": "Save success"
+        },
         "addModal": {
             "game": "game",
             "info": "Select a game to add to your list",
