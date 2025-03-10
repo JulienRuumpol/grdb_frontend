@@ -111,7 +111,10 @@ export class GameDetailComponent implements OnInit {
   }
 
   checkIsUserAdmin() {
+    this.authService.refreshLoggedInUserInformation()
     let userRole = this.authService.loggedInUserInformation.role
+
+    console.log('user role is ' + userRole)
 
     if (userRole == 'Admin') {
       this.isAdmin = true

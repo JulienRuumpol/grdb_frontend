@@ -23,6 +23,6 @@ export const routes: Routes = [
         path: 'account', component: NyiComponent, canActivate: [authGuard]
     },
     {
-        path: 'game/:id', component: GameDetailComponent
+        path: 'game/:id', component: GameDetailComponent, canActivate: [authGuard]
     }
 ];
