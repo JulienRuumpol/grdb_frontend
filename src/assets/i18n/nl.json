@@ -21,7 +21,11 @@
         "InactiveLogoutMessage": "Je bent uitgelogd wegens inactiviteit"
     },
     "game": {
-        "detail": {},
+        "detail": {
+            "description": "Omschrijving",
+            "title": "Titel",
+            "saveSucces": "Wijziging opgeslagen"
+        },
         "addModal": {
             "game": "game",
             "info": "Selecteer een game die je wilt toevoegaan aan je lijst",

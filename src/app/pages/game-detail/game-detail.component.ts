@@ -4,17 +4,14 @@ import { ActivatedRoute } from '@angular/router';
 import { GameDto } from '../../models/dto/game.dto';
 import { MatIcon } from '@angular/material/icon';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MatSpinner } from '@angular/material/progress-spinner';
 import {
   MatSnackBar,
-  MatSnackBarAction,
-  MatSnackBarActions,
-  MatSnackBarLabel,
-  MatSnackBarRef,
 } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 import { AuthService } from '../../services/auth.service';
 import { Location } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
+import { MatSpinner } from '@angular/material/progress-spinner';
 
 
 @Component({
@@ -22,6 +19,7 @@ import { Location } from '@angular/common';
   imports: [
     MatIcon,
     ReactiveFormsModule,
+    TranslateModule,
     MatSpinner
   ],
   templateUrl: './game-detail.component.html',

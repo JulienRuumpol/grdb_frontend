@@ -9,7 +9,8 @@
     <div class="game-details">
         <form (ngSubmit)="saveGame()">
 
-            <label for="title">Title
+            <label for="title"> {{'game.detail.title' | translate}}
+
 
                 @if(isAdmin){<mat-icon type="submit" (click)="saveGame()" class="top-right-icon" aria-hidden="false"
                     aria-label="save" fontIcon="save">
@@ -17,7 +18,8 @@
                 </mat-icon>}</label>
             <input [formControl]="gameForm.controls.name" type="text" id="title" />
 
-            <label for="description">Description</label>
+            <label for="description"> {{'game.detail.description' | translate}}
+            </label>
             <input [formControl]="gameForm.controls.description" type="text" id="title" />
 
             @if(isSaving){
