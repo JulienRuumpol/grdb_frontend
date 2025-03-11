@@ -11,7 +11,7 @@ export const routes: Routes = [
         path: 'login', component: LoginPageComponent
     },
     {
-        path: 'userRole', component: NyiComponent, canActivate: [authGuard, adminGuard]
+        path: 'userRole', component: NyiComponent, canActivate: [adminGuard, authGuard]
     },
     {
         path: 'home', component: HomePageComponent, canActivate: [authGuard]
