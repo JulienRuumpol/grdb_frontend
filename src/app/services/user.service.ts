@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { GameDto } from '../models/dto/game.dto';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,27 @@ export class UserService {
   authenticatedSubjectDetails = new BehaviorSubject<any>("");
 
   constructor(private http: HttpClient) { }
+
+
+  getAllUsers() {
+    // return this.http.get(this.appurl + '/').subscribe((response => {
+    //   console.log('response is ' + JSON.stringify(response))
+    //   return response
+
+    // }));
+
+    return this.http.get<User[]>(this.appurl + '/').pipe(
+      map((response) =>
+        response.map((user: User) => ({
+          id: user.id,
+          name: user.name,
+          email: user.email,
+          role: user.role
+        }))
+      )
+    );
+  }
+
 
   getGamesByUserId(userId: number): Observable<GameDto[]> {
     return this.http.get(this.appurl + "/" + userId + "/game").pipe(

@@ -68,9 +68,6 @@ export class NavBarComponent implements OnInit {
   }
 
   navigateToUserRole() {
-    // implement code to route to /userRole
-    alert('nyi')
-
     this._router.navigate(['userRole'])
   }
 
