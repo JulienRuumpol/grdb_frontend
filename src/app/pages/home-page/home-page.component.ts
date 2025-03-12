@@ -42,9 +42,12 @@ export class HomePageComponent implements OnInit {
   }
 
   getUserGameData() {
+    //todo rework to use id in token
     this.userService.getGamesByUserId(2).subscribe({
       next: (v) => {
         this.games = v;
+        console.log('games ' + this.games)
+
       },
       error: (e) => {
         console.log('error home page at ' + JSON.stringify(e))

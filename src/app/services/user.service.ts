@@ -14,18 +14,18 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
 
-  getAllUsers() {
+  getAllUsers(): Observable<User[]> {
     // return this.http.get(this.appurl + '/').subscribe((response => {
     //   console.log('response is ' + JSON.stringify(response))
     //   return response
 
     // }));
 
-    return this.http.get<User[]>(this.appurl + '/').pipe(
-      map((response) =>
+    return this.http.get(this.appurl + '/').pipe(
+      map((response: any) =>
         response.map((user: User) => ({
           id: user.id,
-          name: user.name,
+          username: user.username,
           email: user.email,
           role: user.role
         }))

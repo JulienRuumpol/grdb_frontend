@@ -1,0 +1,8 @@
+.flexbox-container {
+    display: flex;
+}
+
+.role-card {
+    margin: 5px;
+    width: 500px;
+}

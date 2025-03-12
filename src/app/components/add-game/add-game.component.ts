@@ -31,13 +31,10 @@ export class AddGameComponent implements OnInit, AfterViewInit {
 
   constructor(private userService: UserService, private dialogRef: MatDialogRef<AddGameComponent>) { }
 
-  /** control for the selected bank */
   public gameCtrl: FormControl = new FormControl();
 
-  /** control for the MatSelect filter keyword */
   public gameFilterCtrl: FormControl = new FormControl();
 
-  /** list of banks filtered by search keyword */
   public filteredGames: ReplaySubject<GameDto[]> = new ReplaySubject<GameDto[]>(1);
 
   protected _onDestroy = new Subject<void>();
