@@ -128,4 +128,8 @@ export class AuthService {
     }
     return new Observable<string>();
   }
+
+  getStoredUserInformation() {
+    return this.loggedInUserInformation
+  }
 }

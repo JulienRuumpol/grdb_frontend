@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { GameDto } from '../models/dto/game.dto';
 import { User } from '../models/user.model';
+import { ChangePassword } from '../models/changePassword.model';
 
 @Injectable({
   providedIn: 'root'
@@ -75,5 +76,9 @@ export class UserService {
       complete: () => {
       }
     })
+  }
+
+  changeUserPassword(userId: number, passwordInfo: ChangePassword): Observable<any> {
+    return this.http.put(this.appurl + '/' + userId + '/password', passwordInfo)
   }
 }

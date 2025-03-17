@@ -88,4 +88,8 @@ export class NavBarComponent implements OnInit {
   switchLanguage(language: string) {
     this.translate.use(language);
   }
+
+  ChangePassword() {
+    this._router.navigate(['changePassword'])
+  }
 }
