@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
 import { MatCard } from '@angular/material/card';
@@ -8,6 +8,9 @@ import { MatOption, MatSelect } from '@angular/material/select';
 import { FormControl, FormGroup, FormRecord, ReactiveFormsModule } from '@angular/forms';
 import { Role } from '../../models/role.model';
 import { RoleService } from '../../services/role.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
+import { MatSpinner } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-user-role',
@@ -17,7 +20,8 @@ import { RoleService } from '../../services/role.service';
     MatFormField,
     MatSelect,
     ReactiveFormsModule,
-    MatOption
+    MatOption,
+    MatSpinner
   ],
   templateUrl: './user-role.component.html',
   styleUrl: './user-role.component.css'
@@ -33,8 +37,11 @@ export class UserRoleComponent implements OnInit {
 
   users: Array<User> = []
   roles: Array<Role> = []
+  private _snackBar = inject(MatSnackBar);
+  isSaving: Boolean = false;
 
-  constructor(private userService: UserService, private roleService: RoleService) { }
+
+  constructor(private userService: UserService, private roleService: RoleService, public snackBar: MatSnackBar) { }
   ngOnInit(): void {
 
     this.userService.getAllUsers().subscribe(response => {
@@ -52,6 +59,7 @@ export class UserRoleComponent implements OnInit {
 
   updateUserRole(userId: number) {
     let formRole: Role = this.roleControl.value
+    this.setIsSaving(true)
 
     console.log(userId)
     console.log('roleform is ' + JSON.stringify(formRole))
@@ -59,7 +67,8 @@ export class UserRoleComponent implements OnInit {
     this.roleService.updateRole(userId, formRole).subscribe({
       next: (v) => {
         console.log('update response is ' + JSON.stringify(v))
-
+        this.setIsSaving(false)
+        this.openSaveSuccesSnackbar()
 
       },
       error: (e) => {
@@ -71,6 +80,13 @@ export class UserRoleComponent implements OnInit {
 
   }
 
-
+  setIsSaving(value: Boolean) {
+    this.isSaving = value
+  }
+  openSaveSuccesSnackbar() {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      duration: 5000
+    })
+  }
 
 }

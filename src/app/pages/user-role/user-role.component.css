@@ -1,8 +1,17 @@
 .flexbox-container {
     display: flex;
+    display: 50px;
 }
 
 .role-card {
     margin: 5px;
     width: 500px;
+}
+
+.p {
+    margin-left: 10px;
+}
+
+.save-icon {
+    margin-left: auto;
 }

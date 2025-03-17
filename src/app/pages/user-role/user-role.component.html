@@ -1,11 +1,12 @@
-<p>user-role works!</p>
-
-
 <div class="flexbox-container">
     <ul>
+
+        @if(isSaving){
+        <mat-spinner class="mat-spinner"> </mat-spinner>
+        }
         @for (user of users; track user.id) {
 
-        <mat-card class="role-card">
+        <mat-card class="mat-card">
             <div class="card-content">
 
                 <mat-form-field>
@@ -32,15 +33,13 @@
 
 
 
-
-
-
-
                 </mat-form-field>
-                <mat-icon class="navbar-icon-right" aria-hidden="false" aria-label="exit" fontIcon="save"
-                    class="close-button" (click)="updateUserRole(user.id)"></mat-icon>
+                <span class="p"> {{user.username}}</span>
 
-                <p> {{user.username}}</p>
+                <mat-icon class="save-icon" aria-hidden="false" aria-label="exit" fontIcon="save" class="close-button"
+                    (click)="updateUserRole(user.id)"></mat-icon>
+
+
             </div>
         </mat-card>
         }
