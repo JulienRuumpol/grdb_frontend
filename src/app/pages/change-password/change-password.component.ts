@@ -70,7 +70,6 @@ export class ChangePasswordComponent {
 
     this.userService.changeUserPassword(userId, changePasswordInfo).subscribe({
       next: (v) => {
-        console.log('response founded')
         this.openSaveSuccesSnackbar()
       },
       error: (e) => {
@@ -112,19 +111,14 @@ export class ChangePasswordComponent {
     if (!this.changePasswordForm.controls.newPasswordConfirmation.valid) {
       this.isNewPasswordConfirmationPresent = true;
       errorPresent = true
-      console.log('hey2s')
 
     }
 
     let newvalue = this.changePasswordForm.controls.newPassword.value
     let newvalueconfirm = this.changePasswordForm.controls.newPasswordConfirmation.value
-
-    console.log('ew ' + newvalue + ' ' + newvalueconfirm)
-
     if (!this.isNewPasswordConfirmationPresent && this.changePasswordForm.controls.newPassword.value !== this.changePasswordForm.controls.newPasswordConfirmation.value) {
       this.isNewPasswordConfirmationValid = true
       errorPresent = true
-      console.log('hey')
 
     }
 

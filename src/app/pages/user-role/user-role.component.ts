@@ -52,8 +52,6 @@ export class UserRoleComponent implements OnInit {
       this.roles = response
 
       // fix why the selector isn't working
-      console.log('response is  ' + response)
-      console.log('roles is + ' + this.roles)
     })
   }
 
@@ -61,18 +59,14 @@ export class UserRoleComponent implements OnInit {
     let formRole: Role = this.roleControl.value
     this.setIsSaving(true)
 
-    console.log(userId)
-    console.log('roleform is ' + JSON.stringify(formRole))
-
     this.roleService.updateRole(userId, formRole).subscribe({
       next: (v) => {
-        console.log('update response is ' + JSON.stringify(v))
         this.setIsSaving(false)
         this.openSaveSuccesSnackbar()
 
       },
       error: (e) => {
-        console.log('errro when updating user role at' + e)
+        console.log('error when updating user role at' + JSON.stringify(e))
       },
       complete: () => {
       }
