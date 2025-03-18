@@ -114,8 +114,6 @@ export class ChangePasswordComponent {
 
     }
 
-    let newvalue = this.changePasswordForm.controls.newPassword.value
-    let newvalueconfirm = this.changePasswordForm.controls.newPasswordConfirmation.value
     if (!this.isNewPasswordConfirmationPresent && this.changePasswordForm.controls.newPassword.value !== this.changePasswordForm.controls.newPasswordConfirmation.value) {
       this.isNewPasswordConfirmationValid = true
       errorPresent = true
