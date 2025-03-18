@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, map } from 'rxjs';
 import { GameDto } from '../models/dto/game.dto';
+import { User } from '../models/user.model';
+import { ChangePassword } from '../models/changePassword.model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +13,27 @@ export class UserService {
   authenticatedSubjectDetails = new BehaviorSubject<any>("");
 
   constructor(private http: HttpClient) { }
+
+
+  getAllUsers(): Observable<User[]> {
+    // return this.http.get(this.appurl + '/').subscribe((response => {
+    //   console.log('response is ' + JSON.stringify(response))
+    //   return response
+
+    // }));
+
+    return this.http.get(this.appurl + '/').pipe(
+      map((response: any) =>
+        response.map((user: User) => ({
+          id: user.id,
+          username: user.username,
+          email: user.email,
+          role: user.role
+        }))
+      )
+    );
+  }
+
 
   getGamesByUserId(userId: number): Observable<GameDto[]> {
     return this.http.get(this.appurl + "/" + userId + "/game").pipe(
@@ -53,5 +76,9 @@ export class UserService {
       complete: () => {
       }
     })
+  }
+
+  changeUserPassword(userId: number, passwordInfo: ChangePassword): Observable<any> {
+    return this.http.put(this.appurl + '/' + userId + '/password', passwordInfo)
   }
 }

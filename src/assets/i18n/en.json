@@ -32,5 +32,16 @@
             "games": "games",
             "addGame": "Add game to library"
         }
+    },
+    "changePassword": {
+        "oldPassword": "Old password",
+        "newPassword": "New password",
+        "newPasswordConfirmation": "Repeat new password",
+        "error": "Error invalid passwords detected",
+        "buttonText": "Change password",
+        "noOldPassword": "Fill in your old password",
+        "noNewPassword": "Fill in your new password",
+        "noNewPasswordConfirmation": "Please fill in your new password for confirmation",
+        "newPasswordMismatch": "New password doesn't match confirmation password"
     }
 }

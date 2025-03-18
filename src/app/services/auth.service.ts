@@ -40,7 +40,10 @@ export class AuthService {
 
   refreshLoggedInUserInformation() {
     let token: any = this.getAccessToken()
-    this.loggedInUserInformation = jwtDecode(token)
+
+    if (token != null) {
+      this.loggedInUserInformation = jwtDecode(token)
+    }
 
   }
 
@@ -124,5 +127,9 @@ export class AuthService {
       );
     }
     return new Observable<string>();
+  }
+
+  getStoredUserInformation() {
+    return this.loggedInUserInformation
   }
 }

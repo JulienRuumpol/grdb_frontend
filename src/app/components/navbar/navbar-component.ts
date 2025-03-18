@@ -68,9 +68,6 @@ export class NavBarComponent implements OnInit {
   }
 
   navigateToUserRole() {
-    // implement code to route to /userRole
-    alert('nyi')
-
     this._router.navigate(['userRole'])
   }
 
@@ -90,5 +87,9 @@ export class NavBarComponent implements OnInit {
 
   switchLanguage(language: string) {
     this.translate.use(language);
+  }
+
+  ChangePassword() {
+    this._router.navigate(['changePassword'])
   }
 }
