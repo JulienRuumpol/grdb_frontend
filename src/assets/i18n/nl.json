@@ -32,5 +32,16 @@
             "games": "games",
             "addGame": "Voeg game toe aan bibliotheek"
         }
+    },
+    "changePassword": {
+        "oldPassword": "Oud wachtwoord",
+        "newPassword": "Nieuw wachtwoord",
+        "newPasswordConfirmation": "Herhaal nieuw wachtwoord",
+        "error": "Error bij het veranderen van het wachtwoord, controlleer je oude en nieuwe wachtwoord",
+        "buttonText": "Verander wachtwoord",
+        "noOldPassword": "Vul je oude wachtwoord in",
+        "noNewPassword": "Vul je nieuwe wachtwoord in",
+        "noNewPasswordConfirmation": "Vul je niewe wachtwoord nog een keer in",
+        "newPasswordMismatch": "Nieuwe wachtwoord komt niet 2X overeen"
     }
 }
