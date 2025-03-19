@@ -1,0 +1,44 @@
+<mat-icon type="submit" (click)="saveUserDetails()" class="top-right-icon" aria-hidden="false" aria-label="save"
+    fontIcon="save"> </mat-icon>
+
+<form [formGroup]="userInfoForm">
+
+    <p> username</p>
+
+
+    <mat-form-field>
+        <input matInput [formControl]="userInfoForm.controls.username">
+
+    </mat-form-field>
+    <p> email</p>
+    <mat-form-field>
+        <input matInput [formControl]="userInfoForm.controls.email">
+
+    </mat-form-field>
+
+
+    <p> firstname</p>
+    <mat-form-field>
+        <input matInput [formControl]="userInfoForm.controls.firstname">
+
+    </mat-form-field>
+
+    <p> lastname </p>
+
+    <mat-form-field>
+        <input matInput [formControl]="userInfoForm.controls.lastname">
+
+    </mat-form-field>
+</form>
+
+<p> role </p>
+<mat-form-field>
+    <input matInput [formControl]="userInfoForm.controls.role">
+</mat-form-field>
+
+
+<button (click)="navToChangePasswordPage()"> change password </button>
+
+@if(isSaving){
+<mat-spinner class="mat-spinner"> </mat-spinner>
+}

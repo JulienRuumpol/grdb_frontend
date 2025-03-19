@@ -11,6 +11,8 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { Router } from '@angular/router';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-change-password',
@@ -22,7 +24,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatFormField,
     MatInputModule,
     TranslateModule,
-    MatError
+    MatError,
+    MatIcon
   ],
   templateUrl: './change-password.component.html',
   styleUrl: './change-password.component.css'
@@ -52,7 +55,10 @@ export class ChangePasswordComponent {
     )
   })
 
-  constructor(private userService: UserService, private authService: AuthService, public snackBar: MatSnackBar) { }
+  constructor(private userService: UserService,
+    private authService: AuthService,
+    public snackBar: MatSnackBar,
+    private router: Router) { }
 
 
   ChangePassword() {
@@ -121,5 +127,8 @@ export class ChangePasswordComponent {
     }
 
     return errorPresent;
+  }
+  returnToUserDetailsPage() {
+    this.router.navigate(['account'])
   }
 }

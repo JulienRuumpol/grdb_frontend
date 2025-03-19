@@ -7,6 +7,7 @@ import { GameDetailComponent } from './pages/game-detail/game-detail.component';
 import { adminGuard } from './shared/guards/admin.guard';
 import { UserRoleComponent } from './pages/user-role/user-role.component';
 import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 
 export const routes: Routes = [
     {
@@ -22,12 +23,12 @@ export const routes: Routes = [
         path: 'logout', component: NyiComponent
     },
     {
-        path: 'account', component: NyiComponent, canActivate: [authGuard]
+        path: 'account', component: UserDetailComponent, canActivate: [authGuard]
     },
     {
         path: 'game/:id', component: GameDetailComponent, canActivate: [authGuard]
     },
     {
         path: 'changePassword', component: ChangePasswordComponent, canActivate: [authGuard]
-    }
+    },
 ];
