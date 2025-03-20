@@ -52,6 +52,7 @@
         "role": "Role",
         "changePassword": "Change password",
         "invalidEmail": "Invalid email",
-        "invalidForm": "Please make sure all required user info is correctly filled in"
+        "invalidForm": "Please make sure all required user info is correctly filled in",
+        "alreadyExistingEmail": "This email adress already exists"
     }
 }

@@ -52,6 +52,7 @@
         "role": "Rol",
         "changePassword": "Verander wachtwoord",
         "invalidEmail": "Ongeldige email",
-        "invalidForm": "Niet alle benodigde velden zijn ingevuld of juist"
+        "invalidForm": "Niet alle benodigde velden zijn ingevuld of juist",
+        "alreadyExistingEmail": "Het ingevulde email bestaat al"
     }
 }

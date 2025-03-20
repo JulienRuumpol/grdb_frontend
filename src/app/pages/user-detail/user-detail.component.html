@@ -1,6 +1,6 @@
 <div class="side-div">
     @if (formIsInvalid) {
-    <mat-error> {{'userDetail.invalidForm' | translate}}*</mat-error>
+    <mat-error>{{'userDetail.invalidForm' | translate}}*</mat-error>
     }
     <mat-icon type="submit" (click)="saveUserDetails()" class="top-right-icon" aria-hidden="false" aria-label="save"
         fontIcon="save"> </mat-icon>
@@ -17,19 +17,23 @@
         @if(isInvalidEmail){
         <mat-error>{{'userDetail.invalidEmail' | translate}}</mat-error>
         }
+
+        @if (isAlreadyExistingEmail) {
+        <mat-error>{{'userDetail.alreadyExistingEmail' | translate}}</mat-error>
+        }
         <mat-form-field>
             <input matInput [formControl]="userInfoForm.controls.email">
 
         </mat-form-field>
 
 
-        <p> {{'userDetail.firstname' | translate}}*</p>
+        <p>{{'userDetail.firstname' | translate}}*</p>
         <mat-form-field>
             <input matInput [formControl]="userInfoForm.controls.firstname">
 
         </mat-form-field>
 
-        <p> {{'userDetail.lastname' | translate}}* </p>
+        <p>{{'userDetail.lastname' | translate}}* </p>
 
         <mat-form-field>
             <input matInput [formControl]="userInfoForm.controls.lastname">
@@ -37,19 +41,17 @@
         </mat-form-field>
     </form>
 
-    <p> {{'userDetail.role' | translate}}* </p>
+    <p>{{'userDetail.role' | translate}}* </p>
     <mat-form-field>
         <input matInput [formControl]="userInfoForm.controls.role">
     </mat-form-field>
-
-
 
     @if(isSaving){
     <mat-spinner class="mat-spinner"> </mat-spinner>
     }
 </div>
 
-<div>
-    <button (click)="navToChangePasswordPage()"> {{'userDetail.changePassword' | translate}}</button>
+<div class="side-div">
+    <button (click)="navToChangePasswordPage()">{{'userDetail.changePassword' | translate}}</button>
 
 </div>

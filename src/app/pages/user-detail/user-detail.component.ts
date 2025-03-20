@@ -30,6 +30,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class UserDetailComponent implements OnInit {
 
+  isAlreadyExistingEmail: boolean = false
   isInvalidEmail: boolean = false
   formIsInvalid: boolean = false
   isSaving: boolean = false
@@ -92,12 +93,16 @@ export class UserDetailComponent implements OnInit {
       this.userService.updateUserDetails(userId, updatedUserDetails).subscribe({
         next: (v) => {
           this.openSaveSuccesSnackbar()
-          // this.isSaving = false
 
         },
         error: (e) => {
           console.log('error at user-detail page updating userdetails ' + JSON.stringify(e))
+          this.isSaving = false
 
+          if (e.status === 409) {
+            this.isAlreadyExistingEmail = true
+            this.userInfoForm.controls.email.markAsTouched
+          }
         },
         complete: () => {
           this.isSaving = false
@@ -122,6 +127,7 @@ export class UserDetailComponent implements OnInit {
   resetFormErrors() {
     this.formIsInvalid = false;
     this.isInvalidEmail = false;
+    this.isAlreadyExistingEmail = false;
   }
 
 }
