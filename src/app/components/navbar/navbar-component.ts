@@ -89,7 +89,4 @@ export class NavBarComponent implements OnInit {
     this.translate.use(language);
   }
 
-  ChangePassword() {
-    this._router.navigate(['changePassword'])
-  }
 }
