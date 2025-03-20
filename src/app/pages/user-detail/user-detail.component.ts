@@ -4,7 +4,6 @@ import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
 import { MatError, MatFormField, MatInput, MatLabel } from '@angular/material/input';
-import { MatError, MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSpinner } from '@angular/material/progress-spinner';
 import { MatIcon } from '@angular/material/icon';
@@ -12,7 +11,6 @@ import { Role } from '../../models/role.model';
 import { UpdateUserDetails } from '../../models/update-user-detail.modal';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
-import { TranslateModule } from '@ngx-translate/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -25,7 +23,7 @@ import { TranslateModule } from '@ngx-translate/core';
     MatLabel,
     MatIcon,
     TranslateModule,
-    MatError
+    MatError,
     MatIcon,
     TranslateModule,
     MatError
@@ -116,14 +114,6 @@ export class UserDetailComponent implements OnInit {
       })
     } else {
       this.formIsInvalid = true
-      if (!this.userInfoForm.controls.email.valid) {
-        this.isInvalidEmail = true
-      }
-    } else {
-      this.formIsInvalid = true
-      if (!this.userInfoForm.controls.email.valid) {
-        this.isInvalidEmail = true
-      }
     }
 
 
