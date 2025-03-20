@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
-import { MatFormField, MatInput, MatLabel } from '@angular/material/input';
+import { MatError, MatFormField, MatInput, MatLabel } from '@angular/material/input';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatSpinner } from '@angular/material/progress-spinner';
 import { MatIcon } from '@angular/material/icon';
@@ -11,6 +11,7 @@ import { Role } from '../../models/role.model';
 import { UpdateUserDetails } from '../../models/update-user-detail.modal';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-detail',
@@ -20,13 +21,17 @@ import { SnackbarComponent } from '../../components/snackbar/snackbar.component'
     ReactiveFormsModule,
     MatSpinner,
     MatLabel,
-    MatIcon
+    MatIcon,
+    TranslateModule,
+    MatError
   ],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.css'
 })
 export class UserDetailComponent implements OnInit {
 
+  isInvalidEmail: boolean = false
+  formIsInvalid: boolean = false
   isSaving: boolean = false
   user: User | undefined;
   userRole: Role | undefined;
@@ -54,14 +59,7 @@ export class UserDetailComponent implements OnInit {
 
     if (userId) {
       this.userService.getUserById(userId).subscribe(response => {
-        console.log('user response detail is ' + JSON.stringify(response))
         this.user = response
-
-        console.log('user  is ' + JSON.stringify(this.user))
-
-        console.log('username is' + this.user.username)
-        console.log('lastname is' + this.user.lastName)
-        console.log('roolename is' + this.user.role.name)
 
         this.userInfoForm.patchValue({
           email: this.user.email,
@@ -81,6 +79,7 @@ export class UserDetailComponent implements OnInit {
 
   saveUserDetails() {
     let userId = this.authService.getStoredUserInformation().id
+    this.resetFormErrors()
     if (this.userInfoForm.valid) {
       this.isSaving = true
       let updatedUserDetails: UpdateUserDetails = {
@@ -89,8 +88,6 @@ export class UserDetailComponent implements OnInit {
         firstname: this.userInfoForm.controls.firstname.value || '',
         lastname: this.userInfoForm.controls.lastname.value || ''
       }
-
-      console.log('new updated user detail to be is ' + JSON.stringify(updatedUserDetails))
 
       this.userService.updateUserDetails(userId, updatedUserDetails).subscribe({
         next: (v) => {
@@ -106,6 +103,11 @@ export class UserDetailComponent implements OnInit {
           this.isSaving = false
         }
       })
+    } else {
+      this.formIsInvalid = true
+      if (!this.userInfoForm.controls.email.valid) {
+        this.isInvalidEmail = true
+      }
     }
 
 
@@ -117,5 +119,9 @@ export class UserDetailComponent implements OnInit {
     })
   }
 
+  resetFormErrors() {
+    this.formIsInvalid = false;
+    this.isInvalidEmail = false;
+  }
 
 }

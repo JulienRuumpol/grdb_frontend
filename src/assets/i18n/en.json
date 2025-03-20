@@ -43,5 +43,15 @@
         "noNewPassword": "Fill in your new password",
         "noNewPasswordConfirmation": "Please fill in your new password for confirmation",
         "newPasswordMismatch": "New password doesn't match confirmation password"
+    },
+    "userDetail": {
+        "username": "Username",
+        "email": "Email",
+        "firstname": "firstname",
+        "lastname": "Lastname",
+        "role": "Role",
+        "changePassword": "Change password",
+        "invalidEmail": "Invalid email",
+        "invalidForm": "Please make sure all required user info is correctly filled in"
     }
 }
