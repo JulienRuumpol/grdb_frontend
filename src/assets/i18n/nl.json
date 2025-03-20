@@ -43,5 +43,15 @@
         "noNewPassword": "Vul je nieuwe wachtwoord in",
         "noNewPasswordConfirmation": "Vul je niewe wachtwoord nog een keer in",
         "newPasswordMismatch": "Nieuwe wachtwoord komt niet 2X overeen"
+    },
+    "userDetail": {
+        "username": "Gebruikersnaam",
+        "email": "Email",
+        "firstname": "Voornaam",
+        "lastname": "Achternaam",
+        "role": "Rol",
+        "changePassword": "Verander wachtwoord",
+        "invalidEmail": "Ongeldige email",
+        "invalidForm": "Niet alle benodigde velden zijn ingevuld of juist"
     }
 }

@@ -1,44 +1,55 @@
-<mat-icon type="submit" (click)="saveUserDetails()" class="top-right-icon" aria-hidden="false" aria-label="save"
-    fontIcon="save"> </mat-icon>
+<div class="side-div">
+    @if (formIsInvalid) {
+    <mat-error> {{'userDetail.invalidForm' | translate}}*</mat-error>
+    }
+    <mat-icon type="submit" (click)="saveUserDetails()" class="top-right-icon" aria-hidden="false" aria-label="save"
+        fontIcon="save"> </mat-icon>
 
-<form [formGroup]="userInfoForm">
+    <form [formGroup]="userInfoForm">
 
-    <p> username</p>
+        <p> {{'userDetail.username' | translate}}*</p>
+        <mat-form-field>
+            <input matInput [formControl]="userInfoForm.controls.username">
 
 
+        </mat-form-field>
+        <p> {{'userDetail.email' | translate}}*</p>
+        @if(isInvalidEmail){
+        <mat-error>{{'userDetail.invalidEmail' | translate}}</mat-error>
+        }
+        <mat-form-field>
+            <input matInput [formControl]="userInfoForm.controls.email">
+
+        </mat-form-field>
+
+
+        <p> {{'userDetail.firstname' | translate}}*</p>
+        <mat-form-field>
+            <input matInput [formControl]="userInfoForm.controls.firstname">
+
+        </mat-form-field>
+
+        <p> {{'userDetail.lastname' | translate}}* </p>
+
+        <mat-form-field>
+            <input matInput [formControl]="userInfoForm.controls.lastname">
+
+        </mat-form-field>
+    </form>
+
+    <p> {{'userDetail.role' | translate}}* </p>
     <mat-form-field>
-        <input matInput [formControl]="userInfoForm.controls.username">
-
-    </mat-form-field>
-    <p> email</p>
-    <mat-form-field>
-        <input matInput [formControl]="userInfoForm.controls.email">
-
+        <input matInput [formControl]="userInfoForm.controls.role">
     </mat-form-field>
 
 
-    <p> firstname</p>
-    <mat-form-field>
-        <input matInput [formControl]="userInfoForm.controls.firstname">
 
-    </mat-form-field>
+    @if(isSaving){
+    <mat-spinner class="mat-spinner"> </mat-spinner>
+    }
+</div>
 
-    <p> lastname </p>
+<div>
+    <button (click)="navToChangePasswordPage()"> {{'userDetail.changePassword' | translate}}</button>
 
-    <mat-form-field>
-        <input matInput [formControl]="userInfoForm.controls.lastname">
-
-    </mat-form-field>
-</form>
-
-<p> role </p>
-<mat-form-field>
-    <input matInput [formControl]="userInfoForm.controls.role">
-</mat-form-field>
-
-
-<button (click)="navToChangePasswordPage()"> change password </button>
-
-@if(isSaving){
-<mat-spinner class="mat-spinner"> </mat-spinner>
-}
+</div>
