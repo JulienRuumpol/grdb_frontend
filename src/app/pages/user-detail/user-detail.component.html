@@ -6,38 +6,48 @@
         fontIcon="save"> </mat-icon>
 
     <form [formGroup]="userInfoForm">
+        <form [formGroup]="userInfoForm">
 
-        <p> {{'userDetail.username' | translate}}*</p>
-        <mat-form-field>
-            <input matInput [formControl]="userInfoForm.controls.username">
-
-
-        </mat-form-field>
-        <p> {{'userDetail.email' | translate}}*</p>
-        @if(isInvalidEmail){
-        <mat-error>{{'userDetail.invalidEmail' | translate}}</mat-error>
-        }
-
-        @if (isAlreadyExistingEmail) {
-        <mat-error>{{'userDetail.alreadyExistingEmail' | translate}}</mat-error>
-        }
-        <mat-form-field>
-            <input matInput [formControl]="userInfoForm.controls.email">
-
-        </mat-form-field>
+            <p> {{'userDetail.username' | translate}}*</p>
+            <mat-form-field>
+                <input matInput [formControl]="userInfoForm.controls.username">
+                <p> {{'userDetail.username' | translate}}*</p>
+                <mat-form-field>
+                    <input matInput [formControl]="userInfoForm.controls.username">
 
 
-        <p>{{'userDetail.firstname' | translate}}*</p>
-        <mat-form-field>
-            <input matInput [formControl]="userInfoForm.controls.firstname">
+                </mat-form-field>
+                <p> {{'userDetail.email' | translate}}*</p>
+                @if(isInvalidEmail){
+                <mat-error>{{'userDetail.invalidEmail' | translate}}</mat-error>
+                }
 
-        </mat-form-field>
+                @if (isAlreadyExistingEmail) {
+                <mat-error>{{'userDetail.alreadyExistingEmail' | translate}}</mat-error>
+                }
+                <mat-form-field>
+                    <input matInput [formControl]="userInfoForm.controls.email">
 
-        <p>{{'userDetail.lastname' | translate}}* </p>
+                </mat-form-field>
+            </mat-form-field>
 
-        <mat-form-field>
-            <input matInput [formControl]="userInfoForm.controls.lastname">
 
+            <p>{{'userDetail.firstname' | translate}}*</p>
+            <mat-form-field>
+                <input matInput [formControl]="userInfoForm.controls.firstname">
+
+            </mat-form-field>
+            </mat-form-field>
+
+            <p>{{'userDetail.lastname' | translate}}* </p>
+
+            <mat-form-field>
+                <input matInput [formControl]="userInfoForm.controls.lastname">
+                <mat-form-field>
+                    <input matInput [formControl]="userInfoForm.controls.lastname">
+
+                </mat-form-field>
+        </form>
         </mat-form-field>
     </form>
 
