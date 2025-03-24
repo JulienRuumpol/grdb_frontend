@@ -28,4 +28,10 @@
         </form>
     </div>
 
+    <div>
+        @for (review of reviews; track review) {
+        <p>{{review.username}}: {{review.description}}</p>
+        }
+    </div>
+
 </div>

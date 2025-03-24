@@ -12,6 +12,8 @@ import { AuthService } from '../../services/auth.service';
 import { Location } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatSpinner } from '@angular/material/progress-spinner';
+import { ReviewService } from '../../services/review.service';
+import { Review } from '../../models/dto/Review.modal';
 
 
 @Component({
@@ -35,6 +37,7 @@ export class GameDetailComponent implements OnInit {
     name: "",
     description: ""
   }
+  reviews: Review[] = []
 
   gameForm = new FormGroup({
     name: new FormControl<String>('', [
@@ -45,7 +48,13 @@ export class GameDetailComponent implements OnInit {
     ])
   })
 
-  constructor(private gameService: GameService, private route: ActivatedRoute, public snackBar: MatSnackBar, private authService: AuthService, private location: Location) { }
+  constructor(
+    private gameService: GameService,
+    private route: ActivatedRoute,
+    public snackBar: MatSnackBar,
+    private authService: AuthService,
+    private location: Location,
+    private reviewService: ReviewService) { }
 
 
 
@@ -71,6 +80,18 @@ export class GameDetailComponent implements OnInit {
       complete: () => {
       }
     })
+
+    this.reviewService.getReviewByGame(gameId).subscribe({
+      next: (v) => {
+        this.reviews = v
+
+      },
+      error: (e) => {
+      },
+      complete: () => {
+      }
+    })
+
   }
 
   saveGame() {

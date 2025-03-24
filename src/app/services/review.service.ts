@@ -1,0 +1,20 @@
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable, Observer } from 'rxjs';
+import { Review } from '../models/dto/Review.modal';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ReviewService {
+  appurl: string = 'http://localhost:8080/review/'
+
+  constructor(private http: HttpClient) { }
+
+
+  getReviewByGame(gameId: Number): Observable<Review[]> {
+    return this.http.get<Review[]>(this.appurl + gameId)
+  }
+
+
+}
