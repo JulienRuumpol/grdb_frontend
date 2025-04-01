@@ -16,5 +16,7 @@ export class ReviewService {
     return this.http.get<Review[]>(this.appurl + gameId)
   }
 
-
+  deleteReview(reviewId: number): Observable<any> {
+    return this.http.delete<any>(this.appurl + reviewId);
+  }
 }

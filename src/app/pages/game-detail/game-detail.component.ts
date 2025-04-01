@@ -14,7 +14,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatSpinner } from '@angular/material/progress-spinner';
 import { ReviewService } from '../../services/review.service';
 import { Review } from '../../models/dto/Review.modal';
-
+import { ReviewComponent } from '../../components/review/review/review.component';
 
 @Component({
   selector: 'app-game-detail',
@@ -22,7 +22,9 @@ import { Review } from '../../models/dto/Review.modal';
     MatIcon,
     ReactiveFormsModule,
     TranslateModule,
-    MatSpinner
+    MatSpinner,
+    ReviewComponent
+
   ],
   templateUrl: './game-detail.component.html',
   styleUrl: './game-detail.component.css'

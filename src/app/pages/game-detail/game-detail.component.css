@@ -52,3 +52,12 @@ form {
         size: 5px;
     }
 }
+
+
+.review-box {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: flex-start;
+}

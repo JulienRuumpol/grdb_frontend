@@ -1,0 +1,15 @@
+<mat-dialog-content>
+    <h1> Are you sure you want to remove this review? </h1>
+
+    <div>
+
+        <h2> {{data.review.name}}</h2>
+        <h2> {{data.review.description}}</h2>
+
+    </div>
+
+    <div>
+        <button (click)="deleteReview()"> delete</button>
+        <button (click)="closeDialog()"> no </button>
+    </div>
+</mat-dialog-content>
