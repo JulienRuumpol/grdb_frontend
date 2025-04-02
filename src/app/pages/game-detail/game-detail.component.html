@@ -30,7 +30,7 @@
 
     <div class="review-box">
         @for (review of reviews; track review) {
-        <app-review [review]="review"> </app-review>
+        <app-review [isAdmin]="isAdmin" [userId]="userId" [review]="review"> </app-review>
         }
     </div>
 

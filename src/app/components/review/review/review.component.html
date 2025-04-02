@@ -1,6 +1,6 @@
 <mat-card class="mat-card">
-    <mat-icon class="navbar-icon-right" aria-hidden="false" aria-label="exit" fontIcon="close" class="close-button"
-        (click)="openDeleteDialog()"></mat-icon>
+    @if(review.userId === userId || isAdmin){ <mat-icon class="navbar-icon-right" aria-hidden="false" aria-label="exit"
+        fontIcon="close" class="close-button" (click)="openDeleteDialog()"></mat-icon>}
 
     <p>{{review.username}}</p>
     <p>{{review.postedDate}}</p>

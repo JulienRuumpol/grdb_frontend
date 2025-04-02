@@ -31,6 +31,7 @@ import { ReviewComponent } from '../../components/review/review/review.component
 })
 export class GameDetailComponent implements OnInit {
 
+  userId = 0
   isAdmin = false;
   isSaving: Boolean = false;
   private _snackBar = inject(MatSnackBar);
@@ -134,6 +135,7 @@ export class GameDetailComponent implements OnInit {
   checkIsUserAdmin() {
     this.authService.refreshLoggedInUserInformation()
     let userRole = this.authService.loggedInUserInformation.role
+    this.userId = this.authService.loggedInUserInformation.id
 
     if (userRole == 'Admin') {
       this.isAdmin = true
