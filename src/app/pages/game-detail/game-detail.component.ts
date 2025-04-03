@@ -67,6 +67,12 @@ export class GameDetailComponent implements OnInit {
       gameId = param['id']
     })
 
+
+    this.reviewService.reviewsSubject.subscribe(reviews => {
+      this.reviews = reviews;
+      console.log('reviews i s' + JSON.stringify(reviews))
+    })
+
     this.checkIsUserAdmin()
 
     this.gameService.getGameDetail(gameId).subscribe({
@@ -86,7 +92,8 @@ export class GameDetailComponent implements OnInit {
 
     this.reviewService.getReviewByGame(gameId).subscribe({
       next: (v) => {
-        this.reviews = v
+        // this.reviews = v
+        this.reviewService.reviewsSubject.next(v);
 
       },
       error: (e) => {

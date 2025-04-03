@@ -20,9 +20,12 @@ export class DeleteReviewDialogComponent {
   }
 
   deleteReview() {
-    const review: Review = this.data.review
-    this.reviewService.deleteReview(review.id).subscribe({
+    const deletedReview: Review = this.data.review
+    this.reviewService.deleteReview(deletedReview.id).subscribe({
       next: (v) => {
+        this.reviewService.reviewsSubject.next(
+          this.reviewService.reviewsSubject.value.filter(review => review.id !== deletedReview.id)
+        )
         alert('succes delete')
         this.dialogRef.close()
 

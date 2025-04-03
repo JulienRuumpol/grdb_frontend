@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Observer } from 'rxjs';
+import { BehaviorSubject, Observable, Observer } from 'rxjs';
 import { Review } from '../models/dto/Review.modal';
 
 @Injectable({
@@ -8,6 +8,7 @@ import { Review } from '../models/dto/Review.modal';
 })
 export class ReviewService {
   appurl: string = 'http://localhost:8080/review/'
+  reviewsSubject = new BehaviorSubject<Review[]>([]);
 
   constructor(private http: HttpClient) { }
 
