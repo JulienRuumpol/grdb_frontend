@@ -4,5 +4,7 @@ export interface Review {
     gameId: number
     description: string
     postedDate: Date
+    recentlyUpdatedDate: Date
     username: string
+
 }
