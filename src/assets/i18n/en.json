@@ -54,5 +54,14 @@
         "invalidEmail": "Invalid email",
         "invalidForm": "Please make sure all required user info is correctly filled in",
         "alreadyExistingEmail": "This email adress already exists"
+    },
+    "review": {
+        "by": "By",
+        "postedDate": "Posted at",
+        "description": "Opinion",
+        "recentlyUpdatedDate": "Updated at",
+        "deleteConfirmMessage": "Are you sure you want to remove this review",
+        "delete": "Delete",
+        "cancel": "Cancel"
     }
 }

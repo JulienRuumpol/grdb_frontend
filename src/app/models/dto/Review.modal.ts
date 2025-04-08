@@ -2,7 +2,7 @@ export interface Review {
     id: number
     userId: number
     gameId: number
-    description: string
+    description: String
     postedDate: Date
     recentlyUpdatedDate: Date
     username: string

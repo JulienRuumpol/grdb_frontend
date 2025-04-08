@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Observer } from 'rxjs';
 import { Review } from '../models/dto/Review.modal';
+import { UpdateReview } from '../models/updateReview.modal';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,9 @@ export class ReviewService {
 
   deleteReview(reviewId: number): Observable<any> {
     return this.http.delete<any>(this.appurl + reviewId);
+  }
+
+  updateReview(reviewId: Number, newDescription: UpdateReview): Observable<Review> {
+    return this.http.put<Review>(this.appurl + reviewId, newDescription)
   }
 }

@@ -2,11 +2,13 @@ import { Component, inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogContent, MatDialogRef } from '@angular/material/dialog';
 import { ReviewService } from '../../../../../services/review.service';
 import { Review } from '../../../../../models/dto/Review.modal';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-delete-review-dialog',
   imports: [
-    MatDialogContent
+    MatDialogContent,
+    TranslateModule
 
   ],
   templateUrl: './delete-review-dialog.component.html',

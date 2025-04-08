@@ -1,15 +1,15 @@
 <mat-dialog-content>
-    <h1> Are you sure you want to remove this review? </h1>
+    <h1> {{'review.deleteWarning' | translate}} </h1>
 
     <div>
 
-        <h2> {{data.review.name}}</h2>
-        <h2> {{data.review.description}}</h2>
+        <h2> {{'review.by' | translate}}: {{data.review.username}}</h2>
+        <h2> {{'review.description' | translate}}: {{data.review.description}}</h2>
 
     </div>
 
     <div>
-        <button (click)="deleteReview()"> delete</button>
-        <button (click)="closeDialog()"> no </button>
+        <button (click)="deleteReview()"> {{'review.delete' | translate}}</button>
+        <button (click)="closeDialog()"> {{'review.cancel' | translate}} </button>
     </div>
 </mat-dialog-content>
