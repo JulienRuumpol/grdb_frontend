@@ -31,6 +31,7 @@ import { ReviewComponent } from '../../components/review/review/review.component
 })
 export class GameDetailComponent implements OnInit {
 
+  reviewAddable: boolean = false
   userId = 0
   isAdmin = false;
   isSaving: Boolean = false;
@@ -82,6 +83,8 @@ export class GameDetailComponent implements OnInit {
         this.gameForm.controls.name.setValue(this.game.name)
         this.gameForm.controls.description.setValue(this.game.description)
 
+
+
       },
       error: (e) => {
         console.log('error at game detail ' + JSON.stringify(e))
@@ -95,12 +98,19 @@ export class GameDetailComponent implements OnInit {
         // this.reviews = v
         this.reviewService.reviewsSubject.next(v);
 
+
+        this.reviewAddable = this.canAddReview()
+        console.log('after reviewing get the boolenai s ' + this.reviewAddable)
+
+
       },
       error: (e) => {
       },
       complete: () => {
       }
     })
+
+    console.log('after loading in isreviewaddable ' + this.reviewAddable)
 
   }
 
@@ -155,5 +165,30 @@ export class GameDetailComponent implements OnInit {
 
   returnToPreviousPage() {
     this.location.back()
+  }
+
+  canAddReview(): boolean {
+    let newList = this.reviews.filter(review => review.userId === this.userId)
+
+    console.log('newlsit ' + JSON.stringify(newList))
+    if (newList.length === 0) {
+      return true
+    }
+
+    console.log('returning true')
+
+    return false
+  }
+
+  addReviewToList() {
+    //todo find out why 
+    let newReview = {
+      userId: this.userId,
+      gameId: this.game.id,
+      description: "",
+      postedDate: new Date()
+    }
+
+    // this.reviewService.reviewsSubject.next(this.reviewService.reviewsSubject.val)
   }
 }
