@@ -31,6 +31,11 @@
             "info": "Select a game to add to your list",
             "games": "games",
             "addGame": "Add game to library"
+        },
+        "addNewGameModal": {
+            "description": "Description",
+            "name": "Name",
+            "AddToServer": "Add game to server"
         }
     },
     "changePassword": {
@@ -60,7 +65,7 @@
         "postedDate": "Posted at",
         "description": "Opinion",
         "recentlyUpdatedDate": "Updated at",
-        "deleteConfirmMessage": "Are you sure you want to remove this review",
+        "deleteWarning": "Are you sure you want to remove this review",
         "delete": "Delete",
         "cancel": "Cancel"
     }

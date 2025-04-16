@@ -8,12 +8,15 @@ import { AddGameComponent } from '../../components/add-game/add-game.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from '../../services/auth.service';
+import { AddNewGameComponent } from '../../components/add-new-game/add-new-game/add-new-game.component';
+import { MatIcon } from '@angular/material/icon';
 @Component({
   selector: 'app-home-page',
   imports: [
     MatCard,
     MatCardImage,
-    TranslateModule
+    TranslateModule,
+    MatIcon
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
@@ -35,6 +38,8 @@ export class HomePageComponent implements OnInit {
 
   openAddGameDialog() {
     this.dialog.open(AddGameComponent)
+    console.log('oepning new fdsfsd')
+
 
     this.dialog.afterAllClosed.subscribe((result: any) => {
       this.getUserGameData()
@@ -55,5 +60,11 @@ export class HomePageComponent implements OnInit {
       complete: () => {
       }
     })
+  }
+
+  openAddNewgameDialog() {
+    console.log('oepning new gamecompoennt')
+    this.dialog.open(AddNewGameComponent)
+
   }
 }

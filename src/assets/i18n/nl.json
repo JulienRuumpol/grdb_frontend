@@ -31,6 +31,11 @@
             "info": "Selecteer een game die je wilt toevoegaan aan je lijst",
             "games": "games",
             "addGame": "Voeg game toe aan bibliotheek"
+        },
+        "addNewGameModal": {
+            "description": "Omschrijving",
+            "name": "Naam",
+            "AddToServer": "Game toevoegen aan de server"
         }
     },
     "changePassword": {
@@ -60,8 +65,7 @@
         "postedDate": "Geplaatst op",
         "description": "Mening",
         "recentlyUpdatedDate": "Laatst geupdate op",
-        "deleteConfirmMessage": "Weet je zeker dat je deze review wilt verwijderen",
-        "delete": "Verwijder",
-        "cancel": "Annuleren"
+        "deleteWarning": "Weet je zeker dat je deze review wilt verwijderen",
+        "delete": "Verwijder"
     }
 }

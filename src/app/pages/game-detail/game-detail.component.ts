@@ -15,6 +15,8 @@ import { MatSpinner } from '@angular/material/progress-spinner';
 import { ReviewService } from '../../services/review.service';
 import { Review } from '../../models/dto/Review.modal';
 import { ReviewComponent } from '../../components/review/review/review.component';
+import { MatCard } from '@angular/material/card';
+import { AddReviewDto } from '../../models/dto/AddReview.dto';
 
 @Component({
   selector: 'app-game-detail',
@@ -23,7 +25,8 @@ import { ReviewComponent } from '../../components/review/review/review.component
     ReactiveFormsModule,
     TranslateModule,
     MatSpinner,
-    ReviewComponent
+    ReviewComponent,
+    MatCard
 
   ],
   templateUrl: './game-detail.component.html',
@@ -34,6 +37,7 @@ export class GameDetailComponent implements OnInit {
   reviewAddable: boolean = false
   userId = 0
   isAdmin = false;
+  isSavingNewReview = false;
   isSaving: Boolean = false;
   private _snackBar = inject(MatSnackBar);
   game: GameDto = {
@@ -51,6 +55,8 @@ export class GameDetailComponent implements OnInit {
       Validators.required
     ])
   })
+
+  addReviewForm = new FormControl<String>('', [Validators.required])
 
   constructor(
     private gameService: GameService,
@@ -191,4 +197,41 @@ export class GameDetailComponent implements OnInit {
 
     // this.reviewService.reviewsSubject.next(this.reviewService.reviewsSubject.val)
   }
+
+
+  addReview() {
+
+    if (this.addReviewForm.valid && this.addReviewForm.value !== "") {
+      this.isSavingNewReview = true;
+
+      let reviewDto: AddReviewDto = {
+        userId: this.userId,
+        gameId: this.game.id,
+        description: this.addReviewForm.value ?? '',
+        postedDate: new Date,
+      }
+
+
+      this.reviewService.addReview(reviewDto).subscribe({
+        next: (v) => {
+
+          const currentReviews = this.reviewService.reviewsSubject.value;
+          this.reviewService.reviewsSubject.next([...currentReviews, v]);
+
+
+          this.openSaveSuccesSnackbar()
+        },
+        error: (e) => {
+          console.log('Error at adding a new review  ' + console.log(e))
+
+        },
+        complete: () => {
+          this.isSavingNewReview = false;
+
+        }
+      })
+    }
+
+  }
+
 }

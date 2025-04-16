@@ -95,6 +95,14 @@ export class ReviewComponent implements OnInit {
       this.reviewService.updateReview(this.review.id, newDescription).subscribe({
         next: (v) => {
           this.review.description = newDescription.newDescription
+
+          const currentReviews = this.reviewService.reviewsSubject.value;
+
+          const updatedReviews: Review[] = currentReviews.map(review =>
+            review.id === v.id ? v : review
+          );
+
+          this.reviewService.reviewsSubject.next(updatedReviews);
           this.openSaveSuccesSnackbar()
         },
         error: (e) => {

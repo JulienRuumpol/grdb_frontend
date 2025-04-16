@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, Observer } from 'rxjs';
 import { Review } from '../models/dto/Review.modal';
 import { UpdateReview } from '../models/updateReview.modal';
+import { AddReviewDto } from '../models/dto/AddReview.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -24,5 +25,10 @@ export class ReviewService {
 
   updateReview(reviewId: Number, newDescription: UpdateReview): Observable<Review> {
     return this.http.put<Review>(this.appurl + reviewId, newDescription)
+  }
+
+  addReview(addReviewDto: AddReviewDto): Observable<Review> {
+    return this.http.post<Review>(this.appurl, addReviewDto)
+
   }
 }
