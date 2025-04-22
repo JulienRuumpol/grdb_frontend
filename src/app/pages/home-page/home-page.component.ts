@@ -24,12 +24,14 @@ import { MatIcon } from '@angular/material/icon';
 export class HomePageComponent implements OnInit {
   games: Array<GameDto> = []
   dialog = inject(MatDialog);
+  isAdmin: boolean = false;
 
 
 
   constructor(private userService: UserService, private _router: Router, private authService: AuthService) { }
   ngOnInit(): void {
     this.getUserGameData()
+    this.isAdmin = this.authService.isAdmin()
   }
 
   onGameClick(gameId: Number) {
@@ -38,8 +40,6 @@ export class HomePageComponent implements OnInit {
 
   openAddGameDialog() {
     this.dialog.open(AddGameComponent)
-    console.log('oepning new fdsfsd')
-
 
     this.dialog.afterAllClosed.subscribe((result: any) => {
       this.getUserGameData()

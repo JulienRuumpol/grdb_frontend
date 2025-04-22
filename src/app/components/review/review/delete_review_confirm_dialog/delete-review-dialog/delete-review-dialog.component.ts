@@ -29,6 +29,7 @@ export class DeleteReviewDialogComponent {
           this.reviewService.reviewsSubject.value.filter(review => review.id !== deletedReview.id)
         )
         alert('succes delete')
+        this.reviewService.canAddReviewSubject.next(false)
         this.dialogRef.close()
 
       },

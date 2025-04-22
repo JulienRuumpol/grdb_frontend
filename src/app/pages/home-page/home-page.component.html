@@ -1,7 +1,11 @@
 <div>
     <h1> {{'home.library' | translate}}</h1>
+
+    @if(isAdmin){
     <mat-icon aria-hidden="false" aria-label="add new game to server" fontIcon="add_circle"
         (click)="openAddNewgameDialog()"></mat-icon>
+    }
+
 </div>
 <div class="game-container">
 

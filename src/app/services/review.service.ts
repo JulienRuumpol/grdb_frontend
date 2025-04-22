@@ -11,6 +11,7 @@ import { AddReviewDto } from '../models/dto/AddReview.dto';
 export class ReviewService {
   appurl: string = 'http://localhost:8080/review/'
   reviewsSubject = new BehaviorSubject<Review[]>([]);
+  canAddReviewSubject = new BehaviorSubject<Boolean>(false);
 
   constructor(private http: HttpClient) { }
 

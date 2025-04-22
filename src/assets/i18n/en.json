@@ -33,6 +33,7 @@
             "addGame": "Add game to library"
         },
         "addNewGameModal": {
+            "info": "Please insert the information for the game that you want to add to the server",
             "description": "Description",
             "name": "Name",
             "AddToServer": "Add game to server"

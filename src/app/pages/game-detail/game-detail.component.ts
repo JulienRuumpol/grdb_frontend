@@ -46,6 +46,7 @@ export class GameDetailComponent implements OnInit {
     description: ""
   }
   reviews: Review[] = []
+  isreviewAddable2: Boolean = false
 
   gameForm = new FormGroup({
     name: new FormControl<String>('', [
@@ -108,7 +109,6 @@ export class GameDetailComponent implements OnInit {
         this.reviewAddable = this.canAddReview()
         console.log('after reviewing get the boolenai s ' + this.reviewAddable)
 
-
       },
       error: (e) => {
       },
@@ -116,7 +116,20 @@ export class GameDetailComponent implements OnInit {
       }
     })
 
+    this.reviewService.canAddReviewSubject.subscribe({
+      next: (v) => {
+        console.log('sub next is ' + v)
+        if (v == true) {
+          this.isreviewAddable2 = true;
+        } else {
+          this.isreviewAddable2 = false;
+        }
+        console.log("after changing isreviewaddable2 is " + this.isreviewAddable2)
+      }
+    })
+
     console.log('after loading in isreviewaddable ' + this.reviewAddable)
+
 
   }
 
@@ -176,12 +189,13 @@ export class GameDetailComponent implements OnInit {
   canAddReview(): boolean {
     let newList = this.reviews.filter(review => review.userId === this.userId)
 
-    console.log('newlsit ' + JSON.stringify(newList))
     if (newList.length === 0) {
+      this.reviewService.canAddReviewSubject.next(true)
       return true
     }
 
-    console.log('returning true')
+    this.reviewService.canAddReviewSubject.next(false)
+
 
     return false
   }
@@ -220,6 +234,7 @@ export class GameDetailComponent implements OnInit {
 
 
           this.openSaveSuccesSnackbar()
+          this.reviewAddable = false
         },
         error: (e) => {
           console.log('Error at adding a new review  ' + console.log(e))

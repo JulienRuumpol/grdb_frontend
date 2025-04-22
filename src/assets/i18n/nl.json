@@ -33,8 +33,9 @@
             "addGame": "Voeg game toe aan bibliotheek"
         },
         "addNewGameModal": {
+            "info": "Vul de gegevens in van de game die je wilt toevoegen aan de server",
             "description": "Omschrijving",
-            "name": "Naam",
+            "name": "Title",
             "AddToServer": "Game toevoegen aan de server"
         }
     },
