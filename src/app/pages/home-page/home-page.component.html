@@ -1,4 +1,12 @@
-<h1> {{'home.library' | translate}}</h1>
+<div>
+    <h1> {{'home.library' | translate}}</h1>
+
+    @if(isAdmin){
+    <mat-icon aria-hidden="false" aria-label="add new game to server" fontIcon="add_circle"
+        (click)="openAddNewgameDialog()"></mat-icon>
+    }
+
+</div>
 <div class="game-container">
 
     @for (game of games; track game.id) {
@@ -13,5 +21,7 @@
     </mat-card>
     }
 
-    <h1 (click)="openAddGameDialog()"> + </h1>
+    <mat-icon aria-hidden="false" aria-label="add game to list" fontIcon="add" (click)="openAddGameDialog()"></mat-icon>
+
+
 </div>

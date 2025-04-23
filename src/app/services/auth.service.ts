@@ -132,4 +132,8 @@ export class AuthService {
   getStoredUserInformation() {
     return this.loggedInUserInformation
   }
+
+  isAdmin() {
+    return this.loggedInUserInformation.role == 'Admin'
+  }
 }

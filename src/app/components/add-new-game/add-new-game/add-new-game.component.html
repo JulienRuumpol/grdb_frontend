@@ -1,0 +1,28 @@
+<mat-dialog-content>
+
+
+    <mat-icon class="navbar-icon-right" aria-hidden="false" aria-label="exit" fontIcon="close" class="close-button"
+        (click)="closeDialog()"></mat-icon>
+
+    <h2 mat-dialog-title> {{'game.addNewGameModal.info' | translate}}</h2>
+    <mat-label class="custom-label">{{'game.addNewGameModal.name' |
+        translate}}</mat-label>
+    <form [formGroup]="gameFormGroup">
+
+        <mat-form-field class="custom-form-field">
+            <input matInput placeholder="name" formControlName="name">
+
+        </mat-form-field>
+
+        <mat-label class="custom-label">{{'game.addNewGameModal.description' |
+            translate}}</mat-label>
+
+        <mat-form-field class="custom-form-field">
+            <input matInput placeholder="description" formControlName="description">
+
+        </mat-form-field>
+    </form>
+    <button (click)="addNewGameToGamesList()" class="custom-button">{{'game.addNewGameModal.AddToServer' |
+        translate}}</button>
+
+</mat-dialog-content>

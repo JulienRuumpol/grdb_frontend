@@ -1,0 +1,37 @@
+<mat-card class="mat-card">
+
+
+
+    <div class="card"></div>
+
+    <div class="user-info">
+
+
+        <p>{{'review.by' | translate}}: {{review.username}}</p>
+        <p>{{'review.postedDate' | translate}}: {{ review.postedDate| date: 'dd MMM yyyy h:mm:ss a'}}</p>
+        @if(review.recentlyUpdatedDate != null ){
+        <p> {{'review.recentlyUpdatedDate' | translate}}: {{ review.recentlyUpdatedDate| date: 'dd MMM yyyy h:mm:ss a'}}
+        </p>
+        }
+
+    </div>
+
+    <div class="review-body">
+
+        <form (ngSubmit)="saveReview()">
+            <input class="description-input" [formControl]="reviewForm.controls.description" type="text"
+                id="description">
+        </form>
+
+
+    </div>
+
+    <div class="buttons">
+        @if(review.userId === userId){ <mat-icon class="navbar-icon-right" aria-hidden="false" aria-label="exit"
+            fontIcon="save" class="save-button" (click)="saveReview()"></mat-icon>}
+        @if(review.userId === userId || isAdmin){ <mat-icon class="navbar-icon-right" aria-hidden="false"
+            aria-label="exit" fontIcon="delete" class="delete-button" (click)="openDeleteDialog()"></mat-icon>}
+    </div>
+
+
+</mat-card>

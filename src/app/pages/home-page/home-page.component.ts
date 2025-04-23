@@ -8,12 +8,15 @@ import { AddGameComponent } from '../../components/add-game/add-game.component';
 import { MatDialog } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from '../../services/auth.service';
+import { AddNewGameComponent } from '../../components/add-new-game/add-new-game/add-new-game.component';
+import { MatIcon } from '@angular/material/icon';
 @Component({
   selector: 'app-home-page',
   imports: [
     MatCard,
     MatCardImage,
-    TranslateModule
+    TranslateModule,
+    MatIcon
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
@@ -21,12 +24,14 @@ import { AuthService } from '../../services/auth.service';
 export class HomePageComponent implements OnInit {
   games: Array<GameDto> = []
   dialog = inject(MatDialog);
+  isAdmin: boolean = false;
 
 
 
   constructor(private userService: UserService, private _router: Router, private authService: AuthService) { }
   ngOnInit(): void {
     this.getUserGameData()
+    this.isAdmin = this.authService.isAdmin()
   }
 
   onGameClick(gameId: Number) {
@@ -55,5 +60,11 @@ export class HomePageComponent implements OnInit {
       complete: () => {
       }
     })
+  }
+
+  openAddNewgameDialog() {
+    console.log('oepning new gamecompoennt')
+    this.dialog.open(AddNewGameComponent)
+
   }
 }

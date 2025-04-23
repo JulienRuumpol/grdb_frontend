@@ -7,6 +7,7 @@ import { tokenInterceptor } from './shared/interceptors/token.interceptor';
 import { JwtModule } from "@auth0/angular-jwt";
 import { TranslateModule, TranslateLoader } from "@ngx-translate/core";
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { DatePipe } from '@angular/common';
 
 
 const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: HttpClient) =>
@@ -14,6 +15,7 @@ const httpLoaderFactory: (http: HttpClient) => TranslateHttpLoader = (http: Http
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    DatePipe,
     importProvidersFrom([
       TranslateModule.forRoot({
         loader: {

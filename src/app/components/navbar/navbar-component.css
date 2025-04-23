@@ -21,6 +21,7 @@
     border-right: black;
     border-bottom: black;
     background-color: rgb(17, 197, 247);
+    align-items: center;
 }
 
 p {

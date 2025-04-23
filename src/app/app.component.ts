@@ -5,6 +5,7 @@ import { NavBarComponent } from "./components/navbar/navbar-component";
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { ReviewComponent } from './components/review/review/review.component';
 
 
 
@@ -14,7 +15,8 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   imports: [RouterOutlet,
     MatIconModule, NavBarComponent, MatDialogModule,
     NgxMatSelectSearchModule,
-    TranslateModule
+    TranslateModule,
+    ReviewComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -28,7 +30,5 @@ export class AppComponent {
     this.translate.addLangs(['nl', 'en']);
     this.translate.setDefaultLang('en');
     this.translate.use(this.translate.getBrowserLang() || "en");
-
-
   }
 }

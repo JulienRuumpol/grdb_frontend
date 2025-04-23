@@ -12,7 +12,11 @@ import { AuthService } from '../../services/auth.service';
 import { Location } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatSpinner } from '@angular/material/progress-spinner';
-
+import { ReviewService } from '../../services/review.service';
+import { Review } from '../../models/dto/Review.modal';
+import { ReviewComponent } from '../../components/review/review/review.component';
+import { MatCard } from '@angular/material/card';
+import { AddReviewDto } from '../../models/dto/AddReview.dto';
 
 @Component({
   selector: 'app-game-detail',
@@ -20,14 +24,20 @@ import { MatSpinner } from '@angular/material/progress-spinner';
     MatIcon,
     ReactiveFormsModule,
     TranslateModule,
-    MatSpinner
+    MatSpinner,
+    ReviewComponent,
+    MatCard
+
   ],
   templateUrl: './game-detail.component.html',
   styleUrl: './game-detail.component.css'
 })
 export class GameDetailComponent implements OnInit {
 
+  reviewAddable: boolean = false
+  userId = 0
   isAdmin = false;
+  isSavingNewReview = false;
   isSaving: Boolean = false;
   private _snackBar = inject(MatSnackBar);
   game: GameDto = {
@@ -35,6 +45,8 @@ export class GameDetailComponent implements OnInit {
     name: "",
     description: ""
   }
+  reviews: Review[] = []
+  isreviewAddable2: Boolean = false
 
   gameForm = new FormGroup({
     name: new FormControl<String>('', [
@@ -45,7 +57,15 @@ export class GameDetailComponent implements OnInit {
     ])
   })
 
-  constructor(private gameService: GameService, private route: ActivatedRoute, public snackBar: MatSnackBar, private authService: AuthService, private location: Location) { }
+  addReviewForm = new FormControl<String>('', [Validators.required])
+
+  constructor(
+    private gameService: GameService,
+    private route: ActivatedRoute,
+    public snackBar: MatSnackBar,
+    private authService: AuthService,
+    private location: Location,
+    private reviewService: ReviewService) { }
 
 
 
@@ -53,6 +73,12 @@ export class GameDetailComponent implements OnInit {
     let gameId: number = 0
     this.route.params.subscribe(param => {
       gameId = param['id']
+    })
+
+
+    this.reviewService.reviewsSubject.subscribe(reviews => {
+      this.reviews = reviews;
+      console.log('reviews i s' + JSON.stringify(reviews))
     })
 
     this.checkIsUserAdmin()
@@ -64,6 +90,8 @@ export class GameDetailComponent implements OnInit {
         this.gameForm.controls.name.setValue(this.game.name)
         this.gameForm.controls.description.setValue(this.game.description)
 
+
+
       },
       error: (e) => {
         console.log('error at game detail ' + JSON.stringify(e))
@@ -71,6 +99,38 @@ export class GameDetailComponent implements OnInit {
       complete: () => {
       }
     })
+
+    this.reviewService.getReviewByGame(gameId).subscribe({
+      next: (v) => {
+        // this.reviews = v
+        this.reviewService.reviewsSubject.next(v);
+
+
+        this.reviewAddable = this.canAddReview()
+        console.log('after reviewing get the boolenai s ' + this.reviewAddable)
+
+      },
+      error: (e) => {
+      },
+      complete: () => {
+      }
+    })
+
+    this.reviewService.canAddReviewSubject.subscribe({
+      next: (v) => {
+        console.log('sub next is ' + v)
+        if (v == true) {
+          this.isreviewAddable2 = true;
+        } else {
+          this.isreviewAddable2 = false;
+        }
+        console.log("after changing isreviewaddable2 is " + this.isreviewAddable2)
+      }
+    })
+
+    console.log('after loading in isreviewaddable ' + this.reviewAddable)
+
+
   }
 
   saveGame() {
@@ -111,6 +171,7 @@ export class GameDetailComponent implements OnInit {
   checkIsUserAdmin() {
     this.authService.refreshLoggedInUserInformation()
     let userRole = this.authService.loggedInUserInformation.role
+    this.userId = this.authService.loggedInUserInformation.id
 
     if (userRole == 'Admin') {
       this.isAdmin = true
@@ -124,4 +185,68 @@ export class GameDetailComponent implements OnInit {
   returnToPreviousPage() {
     this.location.back()
   }
+
+  canAddReview(): boolean {
+    let newList = this.reviews.filter(review => review.userId === this.userId)
+
+    if (newList.length === 0) {
+      this.reviewService.canAddReviewSubject.next(true)
+      return true
+    }
+
+    this.reviewService.canAddReviewSubject.next(false)
+
+
+    return false
+  }
+
+  addReviewToList() {
+    //todo find out why 
+    let newReview = {
+      userId: this.userId,
+      gameId: this.game.id,
+      description: "",
+      postedDate: new Date()
+    }
+
+    // this.reviewService.reviewsSubject.next(this.reviewService.reviewsSubject.val)
+  }
+
+
+  addReview() {
+
+    if (this.addReviewForm.valid && this.addReviewForm.value !== "") {
+      this.isSavingNewReview = true;
+
+      let reviewDto: AddReviewDto = {
+        userId: this.userId,
+        gameId: this.game.id,
+        description: this.addReviewForm.value ?? '',
+        postedDate: new Date,
+      }
+
+
+      this.reviewService.addReview(reviewDto).subscribe({
+        next: (v) => {
+
+          const currentReviews = this.reviewService.reviewsSubject.value;
+          this.reviewService.reviewsSubject.next([...currentReviews, v]);
+
+
+          this.openSaveSuccesSnackbar()
+          this.reviewAddable = false
+        },
+        error: (e) => {
+          console.log('Error at adding a new review  ' + console.log(e))
+
+        },
+        complete: () => {
+          this.isSavingNewReview = false;
+
+        }
+      })
+    }
+
+  }
+
 }
