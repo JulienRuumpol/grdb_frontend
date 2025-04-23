@@ -51,8 +51,6 @@ export class ReviewComponent implements OnInit {
     private authService: AuthService,
     public snackBar: MatSnackBar) { }
   ngOnInit(): void {
-    console.log('user id ' + this.userId + "review user id " + this.review.userId)
-
     this.reviewForm.controls.description.setValue(this.review.description)
 
     if (this.userId !== this.review.userId) {
@@ -62,7 +60,6 @@ export class ReviewComponent implements OnInit {
   }
 
   openDeleteDialog() {
-    console.log('opening stuff')
     this.dialog.open(DeleteReviewDialogComponent, {
       data: {
         review: this.review
@@ -76,9 +73,7 @@ export class ReviewComponent implements OnInit {
     let userId = this.authService.loggedInUserInformation.id
     let userRole = this.authService.loggedInUserInformation.role
 
-    console.log("uiser id " + userId + " review userID " + this.review.userId + "uiser role " + userRole)
     if (userId.id === this.review.userId) {
-      console.log('review ' + this.review.description + " is true")
       return true;
     } else {
       return false
