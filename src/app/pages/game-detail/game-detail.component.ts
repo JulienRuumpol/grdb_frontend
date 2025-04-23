@@ -78,7 +78,6 @@ export class GameDetailComponent implements OnInit {
 
     this.reviewService.reviewsSubject.subscribe(reviews => {
       this.reviews = reviews;
-      console.log('reviews i s' + JSON.stringify(reviews))
     })
 
     this.checkIsUserAdmin()
@@ -107,7 +106,6 @@ export class GameDetailComponent implements OnInit {
 
 
         this.reviewAddable = this.canAddReview()
-        console.log('after reviewing get the boolenai s ' + this.reviewAddable)
 
       },
       error: (e) => {
@@ -124,11 +122,9 @@ export class GameDetailComponent implements OnInit {
         } else {
           this.isreviewAddable2 = false;
         }
-        console.log("after changing isreviewaddable2 is " + this.isreviewAddable2)
       }
     })
 
-    console.log('after loading in isreviewaddable ' + this.reviewAddable)
 
 
   }
@@ -200,8 +196,8 @@ export class GameDetailComponent implements OnInit {
     return false
   }
 
+  //todo check if this isn't deprecated
   addReviewToList() {
-    //todo find out why 
     let newReview = {
       userId: this.userId,
       gameId: this.game.id,
