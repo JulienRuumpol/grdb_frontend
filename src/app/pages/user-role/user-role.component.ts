@@ -11,6 +11,7 @@ import { RoleService } from '../../services/role.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 import { MatSpinner } from '@angular/material/progress-spinner';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-user-role',
@@ -36,6 +37,8 @@ export class UserRoleComponent implements OnInit {
   roleControl: FormControl = new FormControl<Role>({ id: 0, name: "Basic" })
 
   users: Array<User> = []
+  usersSubject = new BehaviorSubject<User[]>([])
+
   roles: Array<Role> = []
   private _snackBar = inject(MatSnackBar);
   isSaving: Boolean = false;
@@ -45,13 +48,16 @@ export class UserRoleComponent implements OnInit {
   ngOnInit(): void {
 
     this.userService.getAllUsers().subscribe(response => {
-      this.users = response
+      this.usersSubject.next(response)
     })
 
     this.roleService.getAllRoles().subscribe(response => {
       this.roles = response
-
       // fix why the selector isn't working
+    })
+
+    this.usersSubject.subscribe(v => {
+      this.users = v
     })
   }
 

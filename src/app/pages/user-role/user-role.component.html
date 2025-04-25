@@ -1,4 +1,5 @@
 <div class="flexbox-container">
+
     <ul>
 
         @if(isSaving){
@@ -9,7 +10,9 @@
         <mat-card class="mat-card">
             <div class="card-content">
 
+                <h1>{{user.userName}}</h1>
                 <mat-form-field>
+
 
                     @if (user.role != null){
                     <mat-select [formControl]="roleControl">
@@ -34,8 +37,6 @@
 
 
                 </mat-form-field>
-                <span class="p"> {{user.username}}</span>
-
                 <mat-icon class="save-icon" aria-hidden="false" aria-label="exit" fontIcon="save" class="close-button"
                     (click)="updateUserRole(user.id)"></mat-icon>
 

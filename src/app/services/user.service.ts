@@ -27,9 +27,13 @@ export class UserService {
       map((response: any) =>
         response.map((user: User) => ({
           id: user.id,
-          username: user.username,
+          userName: user.userName,
           email: user.email,
-          role: user.role
+          role: user.role,
+          firstname: user.firstName,
+          lastname: user.lastName,
+          language: user.language
+
         }))
       )
     );
@@ -97,7 +101,7 @@ export class UserService {
           firstName: response.firstName,
           lastName: response.lastName,
           enabled: response.enabled,
-          username: response.userName,
+          userName: response.userName,
           accountNonLocked: response.accountNonLocked,
           credentialsNonExpired: response.credentialNonExpired
         }

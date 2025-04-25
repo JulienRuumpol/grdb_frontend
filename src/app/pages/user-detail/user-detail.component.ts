@@ -67,7 +67,7 @@ export class UserDetailComponent implements OnInit {
 
         this.userInfoForm.patchValue({
           email: this.user.email,
-          username: this.user.username,
+          username: this.user.userName,
           firstname: this.user.firstName,
           lastname: this.user.lastName,
           role: this.user.role.name

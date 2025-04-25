@@ -14,7 +14,7 @@ export interface User {
     firstName: string,
     lastName: string
     enabled: boolean
-    username: string,
+    userName: string,
     accountNonLocked: boolean
     credentialsNonExpired: boolean
 }
