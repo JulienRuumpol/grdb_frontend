@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 import { MatSpinner } from '@angular/material/progress-spinner';
 import { BehaviorSubject } from 'rxjs';
+import { UserRoleCardComponent } from '../../components/user-role/user-role-card.component';
 
 @Component({
   selector: 'app-user-role',
@@ -22,7 +23,8 @@ import { BehaviorSubject } from 'rxjs';
     MatSelect,
     ReactiveFormsModule,
     MatOption,
-    MatSpinner
+    MatSpinner,
+    UserRoleCardComponent
   ],
   templateUrl: './user-role.component.html',
   styleUrl: './user-role.component.css'

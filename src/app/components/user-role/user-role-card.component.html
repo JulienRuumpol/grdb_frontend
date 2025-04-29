@@ -1,0 +1,44 @@
+<p>user-role works!</p>
+
+<h1> this is ADEA REAL ONE </h1>
+
+@if(isSaving){
+<mat-spinner class="mat-spinner"> </mat-spinner>
+}
+
+<mat-card class="mat-card">
+    <div class="card-content">
+
+        <h1>{{user.userName}}</h1>
+        <!-- <mat-form-field> -->
+        <!-- 
+
+            @if (user.role != null){
+            <mat-select [formControl]="roleControl">
+                @for (role of roles; track role ){
+                <mat-option [value]="role">
+                    {{role.name}}
+                </mat-option>
+                }
+
+            </mat-select>
+            } @else {
+
+            <mat-select [formControl]="roleControl">
+                @for (role of roles; track role ){
+                <mat-option [value]="role">
+                    {{role.name}}
+                </mat-option>
+                }
+            </mat-select>
+            } -->
+
+
+
+        <!-- </mat-form-field> -->
+        <mat-icon class="save-icon" aria-hidden="false" aria-label="exit" fontIcon="save" class="close-button"
+            (click)="updateUserRole(user.id)"></mat-icon>
+
+
+    </div>
+</mat-card>
