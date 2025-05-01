@@ -1,48 +1,7 @@
 <div class="flexbox-container">
 
-    <ul>
+    @for (user of users; track user.id) {
 
-        @if(isSaving){
-        <mat-spinner class="mat-spinner"> </mat-spinner>
-        }
-        @for (user of users; track user.id) {
-
-        <mat-card class="mat-card">
-            <div class="card-content">
-
-                <h1>{{user.userName}}</h1>
-                <mat-form-field>
-
-
-                    @if (user.role != null){
-                    <mat-select [formControl]="roleControl">
-                        @for (role of roles; track role ){
-                        <mat-option [value]="role">
-                            {{role.name}}
-                        </mat-option>
-                        }
-
-                    </mat-select>
-                    } @else {
-
-                    <mat-select [formControl]="roleControl">
-                        @for (role of roles; track role ){
-                        <mat-option [value]="role">
-                            {{role.name}}
-                        </mat-option>
-                        }
-                    </mat-select>
-                    }
-
-
-
-                </mat-form-field>
-                <mat-icon class="save-icon" aria-hidden="false" aria-label="exit" fontIcon="save" class="close-button"
-                    (click)="updateUserRole(user.id)"></mat-icon>
-
-
-            </div>
-        </mat-card>
-        }
-    </ul>
+    <app-user-role-card class="user-role-card" [user]="user" [roles]="roles"></app-user-role-card>
+    }
 </div>

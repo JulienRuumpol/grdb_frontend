@@ -5,11 +5,13 @@ import { GameDto } from '../models/dto/game.dto';
 import { User } from '../models/user.model';
 import { ChangePassword } from '../models/changePassword.model';
 import { UpdateUserDetails } from '../models/update-user-detail.modal';
+import { Role } from '../models/role.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
   private appurl = 'http://localhost:8080/user'
   authenticatedSubjectDetails = new BehaviorSubject<any>("");
 
@@ -111,5 +113,9 @@ export class UserService {
 
   updateUserDetails(userId: number, newUserDetails: UpdateUserDetails) {
     return this.http.put(this.appurl + '/' + userId, newUserDetails)
+  }
+
+  updateRole(userId: number, role: Role): Observable<User> {
+    return this.http.put<User>(this.appurl + '/' + userId + '/role', role)
   }
 }

@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 import { MatSpinner } from '@angular/material/progress-spinner';
 import { BehaviorSubject } from 'rxjs';
+import { UserRoleCardComponent } from '../../components/user-role/user-role-card.component';
 
 @Component({
   selector: 'app-user-role',
@@ -22,7 +23,8 @@ import { BehaviorSubject } from 'rxjs';
     MatSelect,
     ReactiveFormsModule,
     MatOption,
-    MatSpinner
+    MatSpinner,
+    UserRoleCardComponent
   ],
   templateUrl: './user-role.component.html',
   styleUrl: './user-role.component.css'
@@ -41,7 +43,6 @@ export class UserRoleComponent implements OnInit {
 
   roles: Array<Role> = []
   private _snackBar = inject(MatSnackBar);
-  isSaving: Boolean = false;
 
 
   constructor(private userService: UserService, private roleService: RoleService, public snackBar: MatSnackBar) { }
@@ -61,28 +62,8 @@ export class UserRoleComponent implements OnInit {
     })
   }
 
-  updateUserRole(userId: number) {
-    let formRole: Role = this.roleControl.value
-    this.setIsSaving(true)
 
-    this.roleService.updateRole(userId, formRole).subscribe({
-      next: (v) => {
-        this.setIsSaving(false)
-        this.openSaveSuccesSnackbar()
 
-      },
-      error: (e) => {
-        console.log('error when updating user role at' + JSON.stringify(e))
-      },
-      complete: () => {
-      }
-    })
-
-  }
-
-  setIsSaving(value: Boolean) {
-    this.isSaving = value
-  }
   openSaveSuccesSnackbar() {
     this._snackBar.openFromComponent(SnackbarComponent, {
       duration: 5000
