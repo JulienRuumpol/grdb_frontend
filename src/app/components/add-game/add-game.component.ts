@@ -9,6 +9,7 @@ import { UserService } from '../../services/user.service';
 import { GameDto } from '../../models/dto/game.dto';
 import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-add-game',
@@ -29,7 +30,9 @@ export class AddGameComponent implements OnInit, AfterViewInit {
 
   games: GameDto[] = []
 
-  constructor(private userService: UserService, private dialogRef: MatDialogRef<AddGameComponent>) { }
+  constructor(private authService: AuthService,
+    private userService: UserService,
+    private dialogRef: MatDialogRef<AddGameComponent>) { }
 
   public gameCtrl: FormControl = new FormControl();
 
@@ -39,9 +42,14 @@ export class AddGameComponent implements OnInit, AfterViewInit {
 
   protected _onDestroy = new Subject<void>();
 
-  ngOnInit(): void {
+  private userId = -0
 
-    this.userService.getNonListedGamesByUser(2).subscribe({
+
+  ngOnInit(): void {
+    this.userId = this.authService.getStoredUserInformation().id
+
+
+    this.userService.getNonListedGamesByUser(this.userId).subscribe({
       next: (v) => {
         this.games = v;
       },
@@ -102,7 +110,7 @@ export class AddGameComponent implements OnInit, AfterViewInit {
   }
 
   addGameToUser() {
-    this.userService.addGameToUser(2, this.gameCtrl.value.id).subscribe({
+    this.userService.addGameToUser(this.userId, this.gameCtrl.value.id).subscribe({
       next: (v) => {
         this.dialogRef.close(true)
       },
