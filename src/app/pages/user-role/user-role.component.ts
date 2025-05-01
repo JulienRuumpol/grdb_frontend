@@ -43,7 +43,6 @@ export class UserRoleComponent implements OnInit {
 
   roles: Array<Role> = []
   private _snackBar = inject(MatSnackBar);
-  isSaving: Boolean = false;
 
 
   constructor(private userService: UserService, private roleService: RoleService, public snackBar: MatSnackBar) { }
@@ -63,28 +62,8 @@ export class UserRoleComponent implements OnInit {
     })
   }
 
-  updateUserRole(userId: number) {
-    let formRole: Role = this.roleControl.value
-    this.setIsSaving(true)
 
-    this.roleService.updateRole(userId, formRole).subscribe({
-      next: (v) => {
-        this.setIsSaving(false)
-        this.openSaveSuccesSnackbar()
 
-      },
-      error: (e) => {
-        console.log('error when updating user role at' + JSON.stringify(e))
-      },
-      complete: () => {
-      }
-    })
-
-  }
-
-  setIsSaving(value: Boolean) {
-    this.isSaving = value
-  }
   openSaveSuccesSnackbar() {
     this._snackBar.openFromComponent(SnackbarComponent, {
       duration: 5000

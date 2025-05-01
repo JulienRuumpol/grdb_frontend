@@ -1,10 +1,5 @@
 <div class="flexbox-container">
 
-
-
-    @if(isSaving){
-    <mat-spinner class="mat-spinner"> </mat-spinner>
-    }
     @for (user of users; track user.id) {
 
     <app-user-role-card class="user-role-card" [user]="user" [roles]="roles"></app-user-role-card>
