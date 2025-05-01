@@ -69,5 +69,9 @@
         "deleteWarning": "Are you sure you want to remove this review",
         "delete": "Delete",
         "cancel": "Cancel"
+    },
+    "userRole": {
+        "user": "User",
+        "role": "Role"
     }
 }

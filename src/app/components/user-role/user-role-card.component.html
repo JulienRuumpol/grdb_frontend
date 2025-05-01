@@ -5,10 +5,10 @@
 <mat-card class="mat-card">
     <div class="card-content">
 
-        <p> User: {{user.userName}}</p>
+        <p> {{'userRole.user' | translate}}: {{user.userName}}</p>
 
 
-        <p> Role:</p>
+        <p> {{'userRole.role' | translate}}:</p>
         <mat-form-field>
             <mat-select [formControl]="roleControl" placeholder="{{user.role.name}}">
                 @for (role of roles; track role.id) {

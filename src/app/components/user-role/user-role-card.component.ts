@@ -10,6 +10,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatSpinner } from '@angular/material/progress-spinner';
 import { MatSelect } from '@angular/material/select';
 import { UserService } from '../../services/user.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-role-card',
@@ -23,7 +24,8 @@ import { UserService } from '../../services/user.service';
     MatFormField,
     MatSpinner,
     MatSelect,
-    MatFormFieldModule
+    MatFormFieldModule,
+    TranslateModule
 
   ],
   templateUrl: './user-role-card.component.html',
