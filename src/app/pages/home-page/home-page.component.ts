@@ -63,7 +63,6 @@ export class HomePageComponent implements OnInit {
   }
 
   openAddNewgameDialog() {
-    console.log('oepning new gamecompoennt')
     this.dialog.open(AddNewGameComponent)
 
   }
