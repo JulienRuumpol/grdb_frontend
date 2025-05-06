@@ -12,6 +12,7 @@ import { UpdateUserDetails } from '../../models/update-user-detail.modal';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-user-detail',
@@ -26,7 +27,8 @@ import { TranslateModule } from '@ngx-translate/core';
     MatError,
     MatIcon,
     TranslateModule,
-    MatError
+    MatError,
+    MatButton
   ],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.css'

@@ -5,52 +5,62 @@
     <mat-icon type="submit" (click)="saveUserDetails()" class="top-right-icon" aria-hidden="false" aria-label="save"
         fontIcon="save"> </mat-icon>
 
-    <form [formGroup]="userInfoForm">
+    <div class="form-div">
+        <form [formGroup]="userInfoForm">
 
-        <p> {{'userDetail.username' | translate}}*</p>
-        <mat-form-field>
-            <input matInput [formControl]="userInfoForm.controls.username">
+            <div>
+                <p> {{'userDetail.username' | translate}}*</p>
+                <mat-form-field>
+                    <input matInput [formControl]="userInfoForm.controls.username">
 
-        </mat-form-field>
-        <p> {{'userDetail.email' | translate}}*</p>
-        @if(isInvalidEmail){
-        <mat-error>{{'userDetail.invalidEmail' | translate}}</mat-error>
-        }
+                </mat-form-field>
+            </div>
 
-        @if (isAlreadyExistingEmail) {
-        <mat-error>{{'userDetail.alreadyExistingEmail' | translate}}</mat-error>
-        }
-        <mat-form-field>
-            <input matInput [formControl]="userInfoForm.controls.email">
+            <div>
+                <p> {{'userDetail.email' | translate}}*</p>
+                @if(isInvalidEmail){
+                <mat-error>{{'userDetail.invalidEmail' | translate}}</mat-error>
+                }
+                @if (isAlreadyExistingEmail) {
+                <mat-error>{{'userDetail.alreadyExistingEmail' | translate}}</mat-error>
+                }
+                <mat-form-field>
+                    <input matInput [formControl]="userInfoForm.controls.email">
 
-        </mat-form-field>
+                </mat-form-field>
+            </div>
 
+            <div>
+                <p>{{'userDetail.firstname' | translate}}*</p>
+                <mat-form-field>
+                    <input matInput [formControl]="userInfoForm.controls.firstname">
 
-        <p>{{'userDetail.firstname' | translate}}*</p>
-        <mat-form-field>
-            <input matInput [formControl]="userInfoForm.controls.firstname">
+                </mat-form-field>
+            </div>
+            <p>{{'userDetail.lastname' | translate}}* </p>
 
-        </mat-form-field>
+            <div>
+                <mat-form-field>
+                    <input matInput [formControl]="userInfoForm.controls.lastname">
 
-        <p>{{'userDetail.lastname' | translate}}* </p>
+                </mat-form-field>
 
-        <mat-form-field>
-            <input matInput [formControl]="userInfoForm.controls.lastname">
+            </div>
+        </form>
 
-        </mat-form-field>
-    </form>
-
-    <p>{{'userDetail.role' | translate}} </p>
-    <mat-form-field>
-        <input matInput [formControl]="userInfoForm.controls.role">
-    </mat-form-field>
-
+        <div>
+            <p>{{'userDetail.role' | translate}} </p>
+            <mat-form-field>
+                <input matInput [formControl]="userInfoForm.controls.role">
+            </mat-form-field>
+        </div>
+    </div>
     @if(isSaving){
     <mat-spinner class="mat-spinner"> </mat-spinner>
     }
 </div>
 
 <div class="side-div">
-    <button (click)="navToChangePasswordPage()">{{'userDetail.changePassword' | translate}}</button>
+    <button mat-raised-button (click)="navToChangePasswordPage()">{{'userDetail.changePassword' | translate}}</button>
 
 </div>

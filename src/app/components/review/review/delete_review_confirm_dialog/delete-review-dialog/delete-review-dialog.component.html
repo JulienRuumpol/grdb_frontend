@@ -1,15 +1,19 @@
 <mat-dialog-content>
-    <h1> {{'review.deleteWarning' | translate}}? </h1>
+    <h2> {{'review.deleteWarning' | translate}}? </h2>
 
     <div>
 
-        <h2> {{'review.by' | translate}}: {{data.review.username}}</h2>
-        <h2> {{'review.description' | translate}}: {{data.review.description}}</h2>
+        <h3> {{'review.by' | translate}}: {{data.review.username}}</h3>
+
+        <h3> {{'review.description' | translate}}: </h3>
+
+
+        <textarea disabled="true" class="review-textarea"> {{data.review.description}}</textarea>
 
     </div>
 
-    <div>
-        <button (click)="deleteReview()"> {{'review.delete' | translate}}</button>
-        <button (click)="closeDialog()"> {{'review.cancel' | translate}} </button>
+    <div class="button-row">
+        <button mat-raised-button (click)="deleteReview()"> {{'review.delete' | translate}}</button>
+        <button mat-raised-button (click)="closeDialog()"> {{'review.cancel' | translate}} </button>
     </div>
 </mat-dialog-content>

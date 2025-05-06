@@ -28,19 +28,14 @@
         </form>
     </div>
 
-    <div class="review-box">
-        @for (review of reviews; track review) {
-        <app-review [isAdmin]="isAdmin" [userId]="userId" [review]="review"> </app-review>
-        }
-    </div>
 
     @if(reviewAddable){
     <div>
         <mat-card>
 
-            <h1> Enter your review</h1>
-            <textarea [formControl]="addReviewForm" class="textarea"></textarea>
-            <button (click)="addReview()"> add review</button>
+            <h1> {{'game.detail.enterReview' | translate}}</h1>
+            <textarea class="review-textarea" [formControl]="addReviewForm"></textarea>
+            <button mat-raised-button (click)="addReview()"> {{'game.detail.addReview' | translate}}</button>
 
             @if(isSavingNewReview){
             <mat-spinner class="mat-spinner"></mat-spinner>
@@ -48,5 +43,12 @@
 
         </mat-card>
     </div>
+    }
+
+</div>
+
+<div class="review-box">
+    @for (review of reviews; track review) {
+    <app-review [isAdmin]="isAdmin" [userId]="userId" [review]="review"> </app-review>
     }
 </div>

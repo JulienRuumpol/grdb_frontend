@@ -17,6 +17,7 @@ import { Review } from '../../models/dto/Review.modal';
 import { ReviewComponent } from '../../components/review/review/review.component';
 import { MatCard } from '@angular/material/card';
 import { AddReviewDto } from '../../models/dto/AddReview.dto';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-game-detail',
@@ -26,7 +27,8 @@ import { AddReviewDto } from '../../models/dto/AddReview.dto';
     TranslateModule,
     MatSpinner,
     ReviewComponent,
-    MatCard
+    MatCard,
+    MatButton
 
   ],
   templateUrl: './game-detail.component.html',

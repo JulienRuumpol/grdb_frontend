@@ -1,0 +1,11 @@
+.review-textarea {
+    resize: none;
+    height: 50px;
+    width: 500px;
+}
+
+.button-row {
+    display: flex;
+    justify-content: left;
+    gap: 10px
+}

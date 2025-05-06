@@ -1,10 +1,16 @@
-<div>
+<div class="library-bar">
     <h1> {{'home.library' | translate}}</h1>
 
     @if(isAdmin){
-    <mat-icon aria-hidden="false" aria-label="add new game to server" fontIcon="add_circle"
-        (click)="openAddNewgameDialog()"></mat-icon>
+
+    <button (click)="openAddNewgameDialog()" class="example-label" mat-raised-button>{{'home.addToServer' |
+        translate}}</button>
     }
+    <!-- <mat-icon aria-hidden="false" aria-label="add game to list" fontIcon="add" (click)="openAddGameDialog()"></mat-icon> -->
+    <button (click)="openAddGameDialog()" class="example-label" mat-raised-button>{{'home.addToLibrary' |
+        translate}}</button>
+
+
 
 </div>
 <div class="game-container">
@@ -21,7 +27,6 @@
     </mat-card>
     }
 
-    <mat-icon aria-hidden="false" aria-label="add game to list" fontIcon="add" (click)="openAddGameDialog()"></mat-icon>
 
 
 </div>

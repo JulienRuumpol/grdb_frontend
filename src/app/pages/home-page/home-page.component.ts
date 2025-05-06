@@ -10,13 +10,15 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from '../../services/auth.service';
 import { AddNewGameComponent } from '../../components/add-new-game/add-new-game/add-new-game.component';
 import { MatIcon } from '@angular/material/icon';
+import { MatButton } from '@angular/material/button';
 @Component({
   selector: 'app-home-page',
   imports: [
     MatCard,
     MatCardImage,
     TranslateModule,
-    MatIcon
+    MatIcon,
+    MatButton
   ],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'

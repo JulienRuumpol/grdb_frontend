@@ -39,6 +39,7 @@ export class LoginPageComponent {
   displayPasswordError: Boolean = false
   displayAuthError: Boolean = false
   isLoggingIn: Boolean = false
+  noConnectionError: Boolean = false
 
   loginForm = new FormGroup({
     email: new FormControl<String>('', [
@@ -71,7 +72,7 @@ export class LoginPageComponent {
         this.userService.getCurrentAuthenticatedUserInformation(tokenInfo.id)
       },
       error: (e) => {
-
+        console.log('e is ' + JSON.stringify(e))
         this.displayAuthError = true
         this.isLoggingIn = false
       },
