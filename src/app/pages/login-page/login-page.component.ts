@@ -72,7 +72,7 @@ export class LoginPageComponent {
         this.userService.getCurrentAuthenticatedUserInformation(tokenInfo.id)
       },
       error: (e) => {
-        console.log('e is ' + JSON.stringify(e))
+        console.log('error during login is  ' + JSON.stringify(e))
         this.displayAuthError = true
         this.isLoggingIn = false
       },
