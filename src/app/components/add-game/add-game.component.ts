@@ -10,6 +10,7 @@ import { GameDto } from '../../models/dto/game.dto';
 import { MatIcon } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { AuthService } from '../../services/auth.service';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-game',
@@ -20,7 +21,8 @@ import { AuthService } from '../../services/auth.service';
     NgxMatSelectSearchModule,
     ReactiveFormsModule,
     MatIcon,
-    TranslateModule
+    TranslateModule,
+    MatButton
 
   ],
   templateUrl: './add-game.component.html',

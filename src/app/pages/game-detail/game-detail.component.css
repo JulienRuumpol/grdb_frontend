@@ -71,3 +71,20 @@ form {
     border-radius: 8px;
     resize: vertical;
 }
+
+.review-textarea {
+    resize: none;
+    height: 100px;
+    width: auto;
+}
+
+.close-button {
+    margin-left: 0px;
+    margin-right: auto;
+}
+
+.game-image {
+    width: 500px;
+    height: 400px;
+    object-fit: contain;
+}

@@ -1,10 +1,16 @@
-<div>
+<div class="library-bar">
     <h1> {{'home.library' | translate}}</h1>
 
     @if(isAdmin){
-    <mat-icon aria-hidden="false" aria-label="add new game to server" fontIcon="add_circle"
-        (click)="openAddNewgameDialog()"></mat-icon>
+
+    <button (click)="openAddNewgameDialog()" class="example-label" mat-raised-button>{{'home.addToServer' |
+        translate}}</button>
     }
+    <!-- <mat-icon aria-hidden="false" aria-label="add game to list" fontIcon="add" (click)="openAddGameDialog()"></mat-icon> -->
+    <button (click)="openAddGameDialog()" class="example-label" mat-raised-button>{{'home.addToLibrary' |
+        translate}}</button>
+
+
 
 </div>
 <div class="game-container">
@@ -12,7 +18,7 @@
     @for (game of games; track game.id) {
     <mat-card (click)="onGameClick(game.id)" class="game-card">
         <div class="card-content">
-            <img mat-card-image class="game-image" src="assets/img/wip.jpg" alt="">
+            <img mat-card-image class="game-image" [src]="game.imageRef" alt="">
             <div class="game-details">
                 <h2 class="game-title"> {{game.name}}</h2>
                 <p class="game-description">{{game.description}}</p>
@@ -21,7 +27,8 @@
     </mat-card>
     }
 
-    <mat-icon aria-hidden="false" aria-label="add game to list" fontIcon="add" (click)="openAddGameDialog()"></mat-icon>
 
 
 </div>
+
+<!-- assets/img/wip.jpg -->

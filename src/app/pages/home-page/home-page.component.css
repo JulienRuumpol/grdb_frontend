@@ -1,15 +1,22 @@
 .game-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+
+}
+
+.library-bar {
     display: flex;
-    flex-basis: 25%;
-    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
 }
 
 .game-card {
     max-width: 500px;
-    margin: 10px;
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
+    /* margin: 10px; */
+    /* padding: 16px; */
+    /* display: flex; */
+    /* flex-direction: column; */
 }
 
 .card-content {
@@ -20,7 +27,7 @@
 .game-image {
     width: 150px;
     height: 150px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 8px;
     margin-right: 16px;
 }

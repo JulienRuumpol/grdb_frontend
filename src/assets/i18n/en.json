@@ -9,7 +9,9 @@
         }
     },
     "home": {
-        "library": "Library"
+        "library": "Bibliotheek",
+        "addToServer": "Add game to server",
+        "addToLibrary": "Add game to library"
     },
     "login": {
         "login": "Login",
@@ -24,12 +26,14 @@
         "detail": {
             "description": "Description",
             "title": "Title",
-            "saveSucces": "Save success"
+            "saveSucces": "Save success",
+            "addReview": "Add review",
+            "enterReview": "Enter your review"
         },
         "addModal": {
-            "game": "game",
-            "info": "Select a game to add to your list",
-            "games": "games",
+            "game": "Game",
+            "info": "Select a game to add to your library",
+            "games": "Games",
             "addGame": "Add game to library"
         },
         "addNewGameModal": {

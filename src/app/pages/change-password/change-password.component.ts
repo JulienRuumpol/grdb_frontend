@@ -7,12 +7,13 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { UserService } from '../../services/user.service';
 import { ChangePassword } from '../../models/changePassword.model';
 import { AuthService } from '../../services/auth.service';
-import { MatInputModule } from '@angular/material/input';
+import { MatInput, MatInputModule } from '@angular/material/input';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SnackbarComponent } from '../../components/snackbar/snackbar.component';
 import { TranslateModule } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-change-password',
@@ -25,7 +26,9 @@ import { MatIcon } from '@angular/material/icon';
     MatInputModule,
     TranslateModule,
     MatError,
-    MatIcon
+    MatIcon,
+    MatButton,
+    MatInput
   ],
   templateUrl: './change-password.component.html',
   styleUrl: './change-password.component.css'

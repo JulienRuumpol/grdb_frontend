@@ -7,6 +7,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { GameService } from '../../../services/game.service';
 import { GameDto } from '../../../models/dto/game.dto';
 import { addGameDto } from '../../../models/dto/AddGame.Dto';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-add-new-game',
@@ -17,7 +18,8 @@ import { addGameDto } from '../../../models/dto/AddGame.Dto';
     MatInput,
     ReactiveFormsModule,
     MatFormField,
-    MatLabel
+    MatLabel,
+    MatButton
   ],
   templateUrl: './add-new-game.component.html',
   styleUrl: './add-new-game.component.css'
@@ -46,6 +48,7 @@ export class AddNewGameComponent {
       const newGame: addGameDto = {
         name: this.gameFormGroup.controls['name'].value,
         description: this.gameFormGroup.controls['description'].value,
+        imageRef: "assets/img/wip.jpg"
       }
       this.gameService.addgameToServer(newGame).subscribe({
         next: (v) => {

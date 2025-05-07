@@ -24,6 +24,11 @@
             <mat-error>{{'login.invalidLogin' | translate}}</mat-error>
             }
 
+            @if(noConnectionError){
+            <mat-error>{{'login.invalidLogin' | translate}}</mat-error>
+
+            }
+
             <button mat-button type="submit" class="submit-button">{{'login.login' | translate}}
             </button>
             @if(isLoggingIn){

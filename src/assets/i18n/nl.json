@@ -9,7 +9,9 @@
         }
     },
     "home": {
-        "library": "Bibliotheek"
+        "library": "Bibliotheek",
+        "addToServer": "Voeg game toe aan de server",
+        "addToLibrary": "Voeg game toe aan jouw bibliotheek"
     },
     "login": {
         "login": "Login",
@@ -24,12 +26,14 @@
         "detail": {
             "description": "Omschrijving",
             "title": "Titel",
-            "saveSucces": "Wijziging opgeslagen"
+            "saveSucces": "Wijziging opgeslagen",
+            "addReview": "Voeg review toe",
+            "enterReview": "Vul je review in"
         },
         "addModal": {
-            "game": "game",
-            "info": "Selecteer een game die je wilt toevoegaan aan je lijst",
-            "games": "games",
+            "game": "Game",
+            "info": "Selecteer een game die je wilt toevoegaan aan jouw bibliotheek",
+            "games": "Games",
             "addGame": "Voeg game toe aan bibliotheek"
         },
         "addNewGameModal": {

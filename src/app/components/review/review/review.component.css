@@ -14,16 +14,24 @@
 }
 
 .description-input {
-    width: fit-content
+    width: fit-content;
+    resize: none;
+    height: 50px;
+    width: 325px;
+
 }
 
 
 .user-info {
     display: inline-block;
-    align-items: start
+    align-items: start;
+    width: fit-content;
+    height: fit-content;
 }
 
 .buttons {
     display: flex;
     align-items: center;
+    margin-right: 0px;
+    margin-left: auto;
 }

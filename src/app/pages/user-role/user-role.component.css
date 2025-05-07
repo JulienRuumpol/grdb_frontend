@@ -1,11 +1,13 @@
 .flexbox-container {
-    display: flex;
-    display: 50px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+
 }
 
 .role-card {
     margin: 5px;
-    width: 500px;
+    width: auto;
 }
 
 .p {

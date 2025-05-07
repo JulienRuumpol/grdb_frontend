@@ -10,7 +10,8 @@
     <form [formGroup]="gameFormGroup">
 
         <mat-form-field class="custom-form-field">
-            <input matInput placeholder="name" formControlName="name">
+            <input matInput placeholder="{{'game.addNewGameModal.name' |
+        translate}}" formControlName="name">
 
         </mat-form-field>
 
@@ -18,11 +19,12 @@
             translate}}</mat-label>
 
         <mat-form-field class="custom-form-field">
-            <input matInput placeholder="description" formControlName="description">
+            <input matInput placeholder="{{'game.addNewGameModal.description' |
+            translate}}" formControlName="description">
 
         </mat-form-field>
     </form>
-    <button (click)="addNewGameToGamesList()" class="custom-button">{{'game.addNewGameModal.AddToServer' |
+    <button mat-raised-button (click)="addNewGameToGamesList()">{{'game.addNewGameModal.AddToServer' |
         translate}}</button>
 
 </mat-dialog-content>

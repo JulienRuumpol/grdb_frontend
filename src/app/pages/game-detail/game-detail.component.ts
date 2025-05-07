@@ -17,6 +17,7 @@ import { Review } from '../../models/dto/Review.modal';
 import { ReviewComponent } from '../../components/review/review/review.component';
 import { MatCard } from '@angular/material/card';
 import { AddReviewDto } from '../../models/dto/AddReview.dto';
+import { MatButton } from '@angular/material/button';
 
 @Component({
   selector: 'app-game-detail',
@@ -26,7 +27,8 @@ import { AddReviewDto } from '../../models/dto/AddReview.dto';
     TranslateModule,
     MatSpinner,
     ReviewComponent,
-    MatCard
+    MatCard,
+    MatButton
 
   ],
   templateUrl: './game-detail.component.html',
@@ -43,7 +45,8 @@ export class GameDetailComponent implements OnInit {
   game: GameDto = {
     id: 0,
     name: "",
-    description: ""
+    description: "",
+    imageRef: ""
   }
   reviews: Review[] = []
   isreviewAddable2: Boolean = false
@@ -116,7 +119,6 @@ export class GameDetailComponent implements OnInit {
 
     this.reviewService.canAddReviewSubject.subscribe({
       next: (v) => {
-        console.log('sub next is ' + v)
         if (v == true) {
           this.isreviewAddable2 = true;
         } else {
@@ -133,7 +135,8 @@ export class GameDetailComponent implements OnInit {
     let newGame = {
       id: this.game.id,
       name: this.gameForm.controls.name.value || "",
-      description: this.gameForm.controls.description.value || ""
+      description: this.gameForm.controls.description.value || "",
+      imageRef: this.game.imageRef
     }
     this.setIsSaving(true)
 
