@@ -55,6 +55,7 @@ export class HomePageComponent implements OnInit {
     this.userService.getGamesByUserId(userId).subscribe({
       next: (v) => {
         this.games = v;
+
       },
       error: (e) => {
         console.log('error home page at ' + JSON.stringify(e))

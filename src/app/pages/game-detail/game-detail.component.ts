@@ -45,7 +45,8 @@ export class GameDetailComponent implements OnInit {
   game: GameDto = {
     id: 0,
     name: "",
-    description: ""
+    description: "",
+    imageRef: ""
   }
   reviews: Review[] = []
   isreviewAddable2: Boolean = false
@@ -118,7 +119,6 @@ export class GameDetailComponent implements OnInit {
 
     this.reviewService.canAddReviewSubject.subscribe({
       next: (v) => {
-        console.log('sub next is ' + v)
         if (v == true) {
           this.isreviewAddable2 = true;
         } else {
@@ -135,7 +135,8 @@ export class GameDetailComponent implements OnInit {
     let newGame = {
       id: this.game.id,
       name: this.gameForm.controls.name.value || "",
-      description: this.gameForm.controls.description.value || ""
+      description: this.gameForm.controls.description.value || "",
+      imageRef: this.game.imageRef
     }
     this.setIsSaving(true)
 

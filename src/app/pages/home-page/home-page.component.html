@@ -18,7 +18,7 @@
     @for (game of games; track game.id) {
     <mat-card (click)="onGameClick(game.id)" class="game-card">
         <div class="card-content">
-            <img mat-card-image class="game-image" src="assets/img/wip.jpg" alt="">
+            <img mat-card-image class="game-image" [src]="game.imageRef" alt="">
             <div class="game-details">
                 <h2 class="game-title"> {{game.name}}</h2>
                 <p class="game-description">{{game.description}}</p>
@@ -30,3 +30,5 @@
 
 
 </div>
+
+<!-- assets/img/wip.jpg -->

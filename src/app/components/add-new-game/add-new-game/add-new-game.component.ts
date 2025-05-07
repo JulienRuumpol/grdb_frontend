@@ -48,6 +48,7 @@ export class AddNewGameComponent {
       const newGame: addGameDto = {
         name: this.gameFormGroup.controls['name'].value,
         description: this.gameFormGroup.controls['description'].value,
+        imageRef: "assets/img/wip.jpg"
       }
       this.gameService.addgameToServer(newGame).subscribe({
         next: (v) => {

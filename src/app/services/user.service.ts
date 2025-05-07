@@ -47,7 +47,8 @@ export class UserService {
       map((response: any) => response.map((game: GameDto) => ({
         id: game.id,
         name: game.name,
-        description: game.description
+        description: game.description,
+        imageRef: game.imageRef
       })))
     )
   }
