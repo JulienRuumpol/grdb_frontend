@@ -1,14 +1,16 @@
-<mat-card class="mat-card">
+<mat-card class="mat-card" data-cy="reviewCard">
 
 
     <div class="card"></div>
 
     <div class="user-info">
 
-        <p>{{'review.by' | translate}}: {{review.username}}</p>
-        <p>{{'review.postedDate' | translate}}: {{ review.postedDate| date: 'dd MMM yyyy h:mm:ss a'}}</p>
+        <p data-cy="reviewBy">{{'review.by' | translate}}: {{review.username}}</p>
+        <p data-cy="reviewPostedDate">{{'review.postedDate' | translate}}: {{ review.postedDate| date: 'dd MMM yyyy
+            h:mm:ss a'}}</p>
         @if(review.recentlyUpdatedDate != null ){
-        <p> {{'review.recentlyUpdatedDate' | translate}}: {{ review.recentlyUpdatedDate| date: 'dd MMM yyyy h:mm:ss a'}}
+        <p data-cy="reviewRecentlyUpdatedDate"> {{'review.recentlyUpdatedDate' | translate}}: {{
+            review.recentlyUpdatedDate| date: 'dd MMM yyyy h:mm:ss a'}}
         </p>
         }
 

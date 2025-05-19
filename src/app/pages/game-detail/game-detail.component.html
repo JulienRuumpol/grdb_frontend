@@ -31,11 +31,12 @@
 
     @if(reviewAddable){
     <div>
-        <mat-card>
+        <mat-card data-cy="addReviewCard">
 
             <h1> {{'game.detail.enterReview' | translate}}</h1>
             <textarea class="review-textarea" [formControl]="addReviewForm"></textarea>
-            <button mat-raised-button (click)="addReview()"> {{'game.detail.addReview' | translate}}</button>
+            <button mat-raised-button (click)="addReview()" data-cy="addReviewButton-"> {{'game.detail.addReview' |
+                translate}}</button>
 
             @if(isSavingNewReview){
             <mat-spinner class="mat-spinner"></mat-spinner>

@@ -35,3 +35,23 @@
 //     }
 //   }
 // }
+
+//todo create Login command
+Cypress.Commands.add('dataCy', (value: string) => {
+    return cy.get(`[data-cy=${value}]`);
+});
+
+// Step 2: Extend the Cypress types (usually in the same file)
+declare global {
+    namespace Cypress {
+        interface Chainable {
+            /**
+             * Custom command to get element by data-cy attribute
+             * @example cy.dataCy('submit-button')
+             */
+            dataCy(value: string): Chainable<JQuery<HTMLElement>>;
+        }
+    }
+}
+
+export { }; // Ensure this file is treated as a module

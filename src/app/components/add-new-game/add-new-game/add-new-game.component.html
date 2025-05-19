@@ -1,4 +1,4 @@
-<mat-dialog-content>
+<mat-dialog-content data-cy="addGameToServerDialog">
 
 
     <mat-icon class="navbar-icon-right" aria-hidden="false" aria-label="exit" fontIcon="close" class="close-button"
@@ -11,7 +11,7 @@
 
         <mat-form-field class="custom-form-field">
             <input matInput placeholder="{{'game.addNewGameModal.name' |
-        translate}}" formControlName="name">
+        translate}}" formControlName="name" data-cy="titleInput">
 
         </mat-form-field>
 
@@ -20,7 +20,7 @@
 
         <mat-form-field class="custom-form-field">
             <input matInput placeholder="{{'game.addNewGameModal.description' |
-            translate}}" formControlName="description">
+            translate}}" formControlName="description" data-cy="descriptionInput">
 
         </mat-form-field>
     </form>

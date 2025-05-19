@@ -3,11 +3,13 @@
 
     @if(isAdmin){
 
-    <button (click)="openAddNewgameDialog()" class="example-label" mat-raised-button>{{'home.addToServer' |
+    <button (click)="openAddNewgameDialog()" class="example-label" mat-raised-button
+        data-cy="addToServerButton">{{'home.addToServer' |
         translate}}</button>
     }
     <!-- <mat-icon aria-hidden="false" aria-label="add game to list" fontIcon="add" (click)="openAddGameDialog()"></mat-icon> -->
-    <button (click)="openAddGameDialog()" class="example-label" mat-raised-button>{{'home.addToLibrary' |
+    <button (click)="openAddGameDialog()" class="example-label" mat-raised-button
+        data-cy="addToLibraryButton">{{'home.addToLibrary' |
         translate}}</button>
 
 
@@ -16,12 +18,12 @@
 <div class="game-container">
 
     @for (game of games; track game.id) {
-    <mat-card (click)="onGameClick(game.id)" class="game-card">
+    <mat-card (click)="onGameClick(game.id)" class="game-card" data-cy="gameCard">
         <div class="card-content">
             <img mat-card-image class="game-image" [src]="game.imageRef" alt="">
             <div class="game-details">
-                <h2 class="game-title"> {{game.name}}</h2>
-                <p class="game-description">{{game.description}}</p>
+                <h2 class="game-title" data-cy="gameTitle"> {{game.name}} </h2>
+                <p class="game-description" data-cy="gameDescription">{{game.description}}</p>
             </div>
         </div>
     </mat-card>
