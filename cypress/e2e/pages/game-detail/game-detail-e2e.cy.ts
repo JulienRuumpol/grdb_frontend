@@ -13,11 +13,36 @@ describe('game-detail-page testing', () => {
 
     })
     it('place a review', () => {
-        if (cy.get('[data-cy="gameCard"').should('exist')
+        if (cy.get('[data-cy="addReviewCard"').should('exist')
         ) {
+            //     cy.get('[data-cy="reviewInput"').type("this a review made by cypress")
+            // cy.get('[data-cy="addReviewButton"').click()
+            //         cy.get('[data-cy="reviewCard"').
 
         }
 
+        var hasReview: Boolean = false;
+
+        // code to go through each reviewCard and check element if it has the required text that is used testing
+        cy.get('[data-cy="reviewCard"').each(($el, index, $list) => {
+            cy.wrap($el).find('[data-cy="reviewInput"').invoke('val')
+                .then(text => {
+                    const reviewText = text;
+
+                    // check if review text is equal to expected text
+                    if (!hasReview && reviewText === "a lot of action which requires good gameplay") {
+                        hasReview = true
+
+                    }
+                });
+
+
+        })
+
+        // check boolean value to be true
+        cy.then(() => {
+            expect(hasReview).to.be.true;
+        });
     })
 
 })
