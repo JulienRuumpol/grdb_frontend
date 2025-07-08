@@ -34,8 +34,8 @@
         <mat-card data-cy="addReviewCard">
 
             <h1> {{'game.detail.enterReview' | translate}}</h1>
-            <textarea class="review-textarea" [formControl]="addReviewForm" data-cy="reviewInput"></textarea>
-            <button mat-raised-button (click)="addReview()" data-cy="addReviewButton-"> {{'game.detail.addReview' |
+            <textarea class="review-textarea" [formControl]="addReviewForm" data-cy="addReviewInput"></textarea>
+            <button mat-raised-button (click)="addReview()" data-cy="addReviewButton"> {{'game.detail.addReview' |
                 translate}}</button>
 
             @if(isSavingNewReview){
